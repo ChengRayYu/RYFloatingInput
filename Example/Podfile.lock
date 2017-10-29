@@ -1,0 +1,23 @@
+PODS:
+  - RxCocoa (4.0.0):
+    - RxSwift (~> 4.0)
+  - RxSwift (4.0.0)
+  - RYFloatingInput (0.1.1):
+    - RxCocoa (~> 4.0)
+    - RxSwift (~> 4.0)
+
+DEPENDENCIES:
+  - RYFloatingInput (from `../`)
+
+EXTERNAL SOURCES:
+  RYFloatingInput:
+    :path: ../
+
+SPEC CHECKSUMS:
+  RxCocoa: d62846ca96495d862fa4c59ea7d87e5031d7340e
+  RxSwift: fd680d75283beb5e2559486f3c0ff852f0d35334
+  RYFloatingInput: cc99dde4965d9fdbbe7de503f81a665a70730d5c
+
+PODFILE CHECKSUM: 99a325eb8e0e08e890076af62eb5084cd6cae3d6
+
+COCOAPODS: 1.3.1
