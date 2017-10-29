@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'RYFloatingInput_Example' do
+  pod 'RYFloatingInput', :path => '../'
+
+  target 'RYFloatingInput_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
