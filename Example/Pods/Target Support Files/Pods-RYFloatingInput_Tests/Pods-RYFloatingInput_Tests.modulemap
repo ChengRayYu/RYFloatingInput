@@ -1,0 +1,6 @@
+framework module Pods_RYFloatingInput_Tests {
+  umbrella header "Pods-RYFloatingInput_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

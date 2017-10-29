@@ -1,0 +1,6 @@
+framework module RYFloatingInput {
+  umbrella header "RYFloatingInput-umbrella.h"
+
+  export *
+  module * { export * }
+}
