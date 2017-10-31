@@ -39,6 +39,7 @@ self.view.addSubview(floatingInput)
 * [Setting Builder](#setting_builder)
 * [Input Text Validation](#text_validation)
 * [Theme & Color Customization](#theme_customization)
+* [Divider Height](#divider_height)
 * [Icon / Placeholder / Secure Text](#other)
 
 <a id='setting_builder'></a>
@@ -51,11 +52,11 @@ self.view.addSubview(floatingInput)
 Example:
 ```swift
 let setting = RYFloatingInputSetting.Builder.instance()
-.theme(.dark)
-.iconImage(UIImage(named: "image_name")!)
-.placeholer("I AM PLACEHOLDER")
-.secure(true)
-.build()
+    .theme(.dark)
+    .iconImage(UIImage(named: "image_name")!)
+    .placeholer("I AM PLACEHOLDER")
+    .secure(true)
+    .build()
 
 floatingInput.setup(setting: setting)
 ```
@@ -71,14 +72,14 @@ Setting up text validation is totally painless in `RYFloatingInput` by simply ad
 Example:
 ```swift
 RYFloatingInputSetting.Builder.instance()
-.theme(.standard)
-.maxLength(8, onViolated: (message: "Exceed max length", callback: {
-print("Exceed max length")
-}))
-.inputType(.number, onViolated: (message: "Invalid input, number only", callback: {
-print("Invalid input, number only")
-}))
-.build()
+    .theme(.standard)
+    .maxLength(8, onViolated: (message: "Exceed max length", callback: {
+        print("Exceed max length")
+    }))
+    .inputType(.number, onViolated: (message: "Invalid input, number only", callback: {
+        print("Invalid input, number only")
+    }))
+    .build()
 ```
 <a id='theme_customization'></a>
 ### Color & Theme Customization
@@ -87,14 +88,14 @@ Here are the color customization options provided:
 
 ```swift
 RYFloatingInputSetting.Builder.instance()
-.backgroundColor(.clear)
-.textColor(.darkText)
-.placeholderColor(.lightGray)
-.dividerColor(.lightGray)
-.cursorColor(.blue)
-.accentColor(.cyan)
-.warningColor(.red)
-.build()
+    .backgroundColor(.clear)
+    .textColor(.darkText)
+    .placeholderColor(.lightGray)
+    .dividerColor(.lightGray)
+    .cursorColor(.blue)
+    .accentColor(.cyan)
+    .warningColor(.red)
+    .build()
 ```
 
 Normally, divider and floating label are displayed as accent color while highlighted, and will turn into warning color once invalid text input has entered.
@@ -108,10 +109,19 @@ Normally, divider and floating label are displayed as accent color while highlig
 
 ```swift
 RYFloatingInputSetting.Builder.instance()
-.theme(.light)
-.build()
+    .theme(.light)
+    .build()
 ```
 Please note that if theme and color customization, e.g. textColor, are both setup in builder, the text color from theme will be ignored.
+
+<a id='divider_height'></a>
+### Divider Height
+3 divider height options are provided: `.thin`, `.regular`, `.bold`. Defaults to `.regular`.
+```swift
+RYFloatingInputSetting.Builder.instance()
+    .dividerWeight(.thin)
+    .build()
+```
 
 <a id='other'></a>
 ### Icon / Placeholder / Secure Text
@@ -119,18 +129,19 @@ Setting input icon, placeholder, secure text options.
 
 ```swift
 RYFloatingInputSetting.Builder.instance()
-.iconImage(UIImage(named: "image_name")!)
-.placeholer("I AM PLACEHOLDER")
-.secure(true)
-.build()
+    .iconImage(UIImage(named: "image_name")!)
+    .placeholer("I AM PLACEHOLDER")
+    .secure(true)
+    .build()
 ```
 
 ## TODO
+- [x]   Customizable divider height - v0.1.2
 - [ ]   Support customized font
 - [ ]   Multiple text validation conditions
 - [ ]   Activity indicator & asyncronous task completion event
 
-## Built with
+## Dependency
 [RxSwift](https://github.com/ReactiveX/RxSwift) - Reactive Programming in Swift
 
 
