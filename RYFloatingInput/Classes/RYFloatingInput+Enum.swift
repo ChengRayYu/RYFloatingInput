@@ -22,6 +22,12 @@ public extension RYFloatingInput {
         }
     }
     
+    public enum DividerWeight: CGFloat {
+        case thin       = 0.5
+        case regular    = 1.0
+        case bold       = 2.0
+    }
+    
     public enum Theme {
         
         case standard

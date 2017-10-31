@@ -32,6 +32,7 @@ class ViewController: UIViewController {
             .placeholer("Cellphone")
             .iconImage(UIImage(named: "ic_num")!)
             .maxLength(10, onViolated: (message: "Exceed Max Length", callback: nil))
+            .inputType(.number, onViolated: (message: "Number Only", callback: nil))
             .build())
         
         emailInput.setup(setting: RYFloatingInputSetting.Builder.instance()
