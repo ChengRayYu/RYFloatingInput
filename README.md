@@ -1,5 +1,5 @@
 # RYFloatingInput
-A flexible text field control of "Float Label Pattern" following mvvm pattern written in Swift.
+RYFlotingInput, inspired by "Floating Label Pattern" and implemented with RxSwift & mvvm pattern, provides a fully-customizable textfield input control along with a painless input text validation.
 
 [![CI Status](http://img.shields.io/travis/eebolue/RYFloatingInput.svg?style=flat)](https://travis-ci.org/eebolue/RYFloatingInput)
 [![Version](https://img.shields.io/cocoapods/v/RYFloatingInput.svg?style=flat)](http://cocoapods.org/pods/RYFloatingInput)
@@ -14,7 +14,6 @@ A flexible text field control of "Float Label Pattern" following mvvm pattern wr
 - Float label pattern
 - Customization support: theme, color, icon
 - Straightforward text input validation and callbacks
-- 
 
 ## Installation
 #### CocoaPods
