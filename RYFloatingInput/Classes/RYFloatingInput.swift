@@ -59,6 +59,7 @@ public class RYFloatingInput: UIView {
     @IBOutlet fileprivate weak var floatingHint: UILabel!
     @IBOutlet fileprivate weak var input: UITextField!
     @IBOutlet fileprivate weak var divider: UIView!
+    @IBOutlet fileprivate weak var dividerHeight: NSLayoutConstraint!
     @IBOutlet fileprivate weak var warningLbl: UILabel!
     @IBOutlet fileprivate weak var inputLeadingMargin: NSLayoutConstraint!
     
