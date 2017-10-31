@@ -20,6 +20,7 @@ public extension RYFloatingInput {
         self.icon.image = setting.iconImage
         self.input.textColor = setting.textColor
         self.input.tintColor = setting.cursorColor
+        self.dividerHeight.constant = setting.dividerHeight
         self.input.placeholder = setting.placeholder
         self.input.isSecureTextEntry = setting.isSecure
         self.input.attributedPlaceholder = NSAttributedString(string: setting.placeholder ?? "",
@@ -59,6 +60,7 @@ public class RYFloatingInput: UIView {
     @IBOutlet fileprivate weak var floatingHint: UILabel!
     @IBOutlet fileprivate weak var input: UITextField!
     @IBOutlet fileprivate weak var divider: UIView!
+    @IBOutlet fileprivate weak var dividerHeight: NSLayoutConstraint!
     @IBOutlet fileprivate weak var warningLbl: UILabel!
     @IBOutlet fileprivate weak var inputLeadingMargin: NSLayoutConstraint!
     

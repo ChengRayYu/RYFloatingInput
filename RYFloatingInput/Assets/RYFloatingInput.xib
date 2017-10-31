@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RYFloatingInput" customModule="RYFloatingInput" customModuleProvider="target">
             <connections>
                 <outlet property="divider" destination="TSD-Ca-U7P" id="aqO-oW-nqu"/>
+                <outlet property="dividerHeight" destination="KI5-qj-SDJ" id="HkF-AG-Y6a"/>
                 <outlet property="floatingHint" destination="jqN-2n-YhU" id="DRV-0l-fxz"/>
                 <outlet property="icon" destination="1vt-3E-JeI" id="pxb-LK-npc"/>
                 <outlet property="input" destination="EQU-37-ast" id="dEK-eM-9Q4"/>
@@ -52,11 +53,21 @@
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TSD-Ca-U7P">
-                            <rect key="frame" x="12" y="47.5" width="336" height="0.5"/>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wo3-k0-iPU">
+                            <rect key="frame" x="12" y="46" width="336" height="4"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TSD-Ca-U7P">
+                                    <rect key="frame" x="0.0" y="1.5" width="336" height="1"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="1" id="KI5-qj-SDJ"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
                             <constraints>
-                                <constraint firstAttribute="height" constant="0.5" id="KI5-qj-SDJ"/>
+                                <constraint firstItem="TSD-Ca-U7P" firstAttribute="centerY" secondItem="wo3-k0-iPU" secondAttribute="centerY" id="G29-L8-K1B"/>
+                                <constraint firstItem="TSD-Ca-U7P" firstAttribute="width" secondItem="wo3-k0-iPU" secondAttribute="width" id="c5W-id-9rD"/>
+                                <constraint firstAttribute="height" constant="4" id="xwh-0S-8m2"/>
+                                <constraint firstItem="TSD-Ca-U7P" firstAttribute="centerX" secondItem="wo3-k0-iPU" secondAttribute="centerX" id="zYv-HU-Ka3"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHT-89-3pH">
@@ -69,21 +80,20 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstItem="EQU-37-ast" firstAttribute="top" secondItem="CQM-3t-2Kh" secondAttribute="top" constant="16" id="3cB-U6-Hjm"/>
+                        <constraint firstItem="dHT-89-3pH" firstAttribute="top" secondItem="wo3-k0-iPU" secondAttribute="bottom" id="4du-3p-xzt"/>
                         <constraint firstItem="EQU-37-ast" firstAttribute="leading" secondItem="CQM-3t-2Kh" secondAttribute="leading" constant="12" id="6F2-x3-ywS"/>
-                        <constraint firstItem="dHT-89-3pH" firstAttribute="top" secondItem="EQU-37-ast" secondAttribute="bottom" constant="4" id="Cnp-zs-0fp"/>
-                        <constraint firstAttribute="bottom" secondItem="dHT-89-3pH" secondAttribute="bottom" constant="2" id="HsO-q3-sgt"/>
+                        <constraint firstItem="wo3-k0-iPU" firstAttribute="top" secondItem="EQU-37-ast" secondAttribute="bottom" id="A4I-dG-5yg"/>
                         <constraint firstItem="dHT-89-3pH" firstAttribute="trailing" secondItem="EQU-37-ast" secondAttribute="trailing" id="Kpi-s3-V9x"/>
                         <constraint firstItem="1vt-3E-JeI" firstAttribute="centerY" secondItem="CQM-3t-2Kh" secondAttribute="centerY" id="L6G-Rw-oNX"/>
-                        <constraint firstItem="TSD-Ca-U7P" firstAttribute="leading" secondItem="EQU-37-ast" secondAttribute="leading" id="VrD-wj-Cbv"/>
-                        <constraint firstItem="TSD-Ca-U7P" firstAttribute="trailing" secondItem="EQU-37-ast" secondAttribute="trailing" id="brY-lp-IXZ"/>
+                        <constraint firstItem="wo3-k0-iPU" firstAttribute="leading" secondItem="EQU-37-ast" secondAttribute="leading" id="OtO-Lg-DUr"/>
                         <constraint firstItem="dHT-89-3pH" firstAttribute="leading" secondItem="EQU-37-ast" secondAttribute="leading" id="eE9-iN-YYp"/>
-                        <constraint firstItem="dHT-89-3pH" firstAttribute="top" secondItem="TSD-Ca-U7P" secondAttribute="bottom" constant="2" id="hM1-9y-bxy"/>
                         <constraint firstItem="EQU-37-ast" firstAttribute="top" secondItem="jqN-2n-YhU" secondAttribute="bottom" constant="2" id="hRf-Fr-6q8"/>
                         <constraint firstAttribute="height" constant="72" id="j4f-Ld-8Hs"/>
                         <constraint firstAttribute="trailing" secondItem="EQU-37-ast" secondAttribute="trailing" constant="12" id="jPv-LQ-jax"/>
+                        <constraint firstAttribute="bottom" secondItem="dHT-89-3pH" secondAttribute="bottom" constant="2" id="m3j-tS-yM4"/>
+                        <constraint firstItem="wo3-k0-iPU" firstAttribute="trailing" secondItem="EQU-37-ast" secondAttribute="trailing" id="oBW-84-1Fh"/>
                         <constraint firstItem="1vt-3E-JeI" firstAttribute="leading" secondItem="CQM-3t-2Kh" secondAttribute="leading" constant="12" id="vVZ-st-8bx"/>
                         <constraint firstItem="jqN-2n-YhU" firstAttribute="leading" secondItem="EQU-37-ast" secondAttribute="leading" id="yfg-Zr-d11"/>
                     </constraints>
