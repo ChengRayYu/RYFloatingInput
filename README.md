@@ -6,13 +6,15 @@ A flexible text field control of "Float Label Pattern" following mvvm pattern wr
 [![License](https://img.shields.io/cocoapods/l/RYFloatingInput.svg?style=flat)](http://cocoapods.org/pods/RYFloatingInput)
 [![Platform](https://img.shields.io/cocoapods/p/RYFloatingInput.svg?style=flat)](http://cocoapods.org/pods/RYFloatingInput)
 
-![](./Screenshots/Showcase.gif)
+<p align="center">
+    <img src="./Screenshots/Showcase.gif">
+</p>
 
 ## Features
 - Float label pattern
 - Customization support: theme, color, icon
-- Text input inpection and callback
-- mvvm pattern
+- Straightforward text input validation and callbacks
+- 
 
 ## Installation
 #### CocoaPods
