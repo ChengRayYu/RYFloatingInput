@@ -12,55 +12,42 @@ import RxCocoa
 
 internal class RYFloatingInputViewModel {
     
-    internal enum ViolationStatus {
-        case valid
-        case maxLengthViolated
-        case inputTypeViolated
-    }
-    
-    internal let inputViolated: Observable<ViolationStatus>
-    internal let highlightFloatinHint: Observable<Bool>
-    
-    private static var floatingHintHighlighted: Bool = false
+    internal let inputViolatedDrv: Driver<RYFloatingInput.ViolationStatus>
+    internal let hintVisibleDrv: Driver<RYFloatingInput.HintVisibility>
 
-    init(input: Observable<String?>, dependency: (maxLength: Int?, regexPattern: String?)) {
+    internal init(input: Driver<String>, dependency: (maxLength: Int?, inputType: RYFloatingInput.InputType?)) {
      
-        inputViolated = input.map({ (inputStr) -> ViolationStatus in
-            
-            guard let content = inputStr, content.characters.count > 0 else {
+        inputViolatedDrv = input
+            .map({ (content) -> RYFloatingInput.ViolationStatus in
+
+                guard content.count > 0 else {
+                    return .valid
+                }
+                guard let rp = dependency.inputType?.pattern, !RYFloatingInputViewModel.regex(pattern: rp, input: content) else {
+                    return .inputTypeViolated
+                }
+                guard let ml = dependency.maxLength, content.count < ml else {
+                    return .maxLengthViolated
+                }
                 return .valid
-            }
-            if let rp = dependency.regexPattern, RYFloatingInputViewModel.regex(pattern: rp, input: content) {
-                return .inputTypeViolated
-            }
-            if let ml = dependency.maxLength, content.characters.count > ml {
-                return .maxLengthViolated
-            }            
-            return .valid
-        })
+            })
 
-        highlightFloatinHint = input.map({ (inputStr) -> Bool in
-
-            guard let content = inputStr else {
-                RYFloatingInputViewModel.floatingHintHighlighted = false
-                return RYFloatingInputViewModel.floatingHintHighlighted
-            }
-            if content.characters.count == 0 {
-                RYFloatingInputViewModel.floatingHintHighlighted = false
-            }
-            if content.characters.count > 0, RYFloatingInputViewModel.floatingHintHighlighted == false {
-                RYFloatingInputViewModel.floatingHintHighlighted = true
-            }
-            return RYFloatingInputViewModel.floatingHintHighlighted
-        })
+        hintVisibleDrv = input
+            .map({ (content) -> RYFloatingInput.HintVisibility in
+                return (content.count > 0) ? .visible : .hidden
+            })
+            .distinctUntilChanged()
     }
-    
-    private static func regex(pattern: String, input: String) -> Bool {
-        
+}
+
+private extension RYFloatingInputViewModel {
+
+    static func regex(pattern: String, input: String) -> Bool {
+
         do {
             let regexNumbersOnly = try NSRegularExpression(pattern: pattern, options: [])
-            return regexNumbersOnly.firstMatch(in: input, options: [], range: NSMakeRange(0, input.characters.count)) == nil
-            
+            return regexNumbersOnly.firstMatch(in: input, options: [], range: NSMakeRange(0, input.count)) == nil
+
         } catch let error as NSError {
             print(error.description)
         }

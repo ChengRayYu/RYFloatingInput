@@ -92,6 +92,20 @@ public extension RYFloatingInput {
     }
 }
 
+internal extension RYFloatingInput {
+
+    internal enum ViolationStatus {
+        case valid
+        case maxLengthViolated
+        case inputTypeViolated
+    }
+
+    internal enum HintVisibility {
+        case visible
+        case hidden
+    }
+}
+
 private extension UIColor {
     
     convenience init(hex: Int) {
