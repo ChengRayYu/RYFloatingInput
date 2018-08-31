@@ -62,7 +62,7 @@ public class RYFloatingInput: UIView {
     fileprivate var setting: RYFloatingInputSetting?
     fileprivate let disposeBag = DisposeBag()
 
-    internal override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
     }
