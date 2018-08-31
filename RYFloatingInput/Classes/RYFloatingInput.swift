@@ -11,18 +11,18 @@ import RxSwift
 import RxCocoa
 
 public extension RYFloatingInput {
-    
+
     public func setup(setting: RYFloatingInputSetting) {
-                
+
         self.setting = setting
-        
+
         self.backgroundColor = setting.backgroundColor
         self.icon.image = setting.iconImage
         self.input.textColor = setting.textColor
         self.input.tintColor = setting.cursorColor
         self.dividerHeight.constant = setting.dividerHeight
         self.input.placeholder = setting.placeholder
-        self.input.isSecureTextEntry = setting.isSecure
+        self.input.isSecureTextEntry = setting.isSecure ?? false
         self.input.attributedPlaceholder = NSAttributedString(string: setting.placeholder ?? "",
                                                               attributes: [NSAttributedStringKey.foregroundColor: setting.placeholderColor])
         self.divider.backgroundColor = setting.dividerColor
@@ -33,29 +33,24 @@ public extension RYFloatingInput {
         }
         self.rx()
     }
-    
+
     public func text() -> String? {
         return self.input.text
     }
-    
-    public func enabled() {
-        self.input.isUserInteractionEnabled = true
+
+    public func setEnabled(_ flag: Bool? = true) {
+        self.input.isUserInteractionEnabled = flag!
     }
-    
-    public func disabled() {
-        self.input.isUserInteractionEnabled = false
-    }
-    
+
     public override func resignFirstResponder() -> Bool {
         return input.resignFirstResponder()
     }
 }
 
-public typealias RYFloatingInputViolation = (message: String, callback: (() -> Void)?)
-
 public class RYFloatingInput: UIView {
-    
-    // Components
+
+    public typealias InputViolation = (message: String, callback: (() -> Void)?)
+
     @IBOutlet fileprivate weak var icon: UIImageView!
     @IBOutlet fileprivate weak var floatingHint: UILabel!
     @IBOutlet fileprivate weak var input: UITextField!
@@ -63,23 +58,16 @@ public class RYFloatingInput: UIView {
     @IBOutlet fileprivate weak var dividerHeight: NSLayoutConstraint!
     @IBOutlet fileprivate weak var warningLbl: UILabel!
     @IBOutlet fileprivate weak var inputLeadingMargin: NSLayoutConstraint!
-    
-    // FloatingHintStatus
-    private enum FloatingHintStatus { case visible, hidden }
-    private var floatingHintStatus: FloatingHintStatus = .hidden
-    
-    // Settings
+
     fileprivate var setting: RYFloatingInputSetting?
-    
-    // Rx Dispose
-    let dispose = DisposeBag()
-    
-    public override init(frame: CGRect) {
+    fileprivate let disposeBag = DisposeBag()
+
+    internal override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
     }
     
-    required public init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupView()
     }
@@ -99,68 +87,69 @@ public class RYFloatingInput: UIView {
     }
     
     fileprivate func rx() {
-        
-        self.input.rx.controlEvent([.editingDidEnd, .editingDidBegin])
-            .asObservable()
-            .subscribe(onNext: { [weak self] _ in
-                self?.divider.backgroundColor = (self?.input.isFirstResponder)! ? self?.setting?.accentColor : self?.setting?.dividerColor
+
+        input.rx.controlEvent([.editingDidEnd, .editingDidBegin])
+            .subscribe(onNext: { _ in
+                self.divider.backgroundColor = self.input.isFirstResponder ? self.setting?.accentColor : self.setting?.dividerColor
             })
-            .disposed(by: dispose)
-        
-        let vm = RYFloatingInputViewModel(input: self.input.rx.text.asObservable(),
-                                          dependency: (maxLength: self.setting?.maxLength, regexPattern: self.setting?.inputType?.pattern))
-        
-        vm.inputViolated.bind { [weak self] (status) in
-            
-            var _violation: RYFloatingInputViolation? = nil
-            switch status {
-            case .valid:
-                self?.floatingHint.textColor = self?.setting?.accentColor
-                self?.warningLbl.text = nil
-                if (self?.input.isFirstResponder)! { self?.divider.backgroundColor = self?.setting?.accentColor }
-                return
+            .disposed(by: disposeBag)
 
-            case .maxLengthViolated:    _violation = self?.setting?.maxLengthViolation
-            case .inputTypeViolated:    _violation = self?.setting?.inputTypeViolation
-            }
-            
-            guard let voilation = _violation else {
+        let vm = RYFloatingInputViewModel(input: self.input.rx.text.orEmpty.asDriver(),
+                                          dependency: (maxLength: self.setting?.maxLength,
+                                                       inputType: self.setting?.inputType))
+
+        vm.inputViolatedDrv
+            .map({ (status) -> (status: ViolationStatus, violation: InputViolation?)in
+                switch status {
+                case .valid:                return (status, nil)
+                case .inputTypeViolated:    return (status, self.setting?.inputTypeViolation)
+                case .maxLengthViolated:    return (status, self.setting?.maxLengthViolation)
+                }
+            })
+            .drive(self.rx.status)
+            .disposed(by: disposeBag)
+
+        vm.hintVisibleDrv
+            .drive(self.rx.hintVisible)
+            .disposed(by: disposeBag)
+    }
+}
+
+private extension Reactive where Base: RYFloatingInput {
+
+    var status: Binder<(status: RYFloatingInput.ViolationStatus, violation: RYFloatingInput.InputViolation?)> {
+
+        return Binder(base, binding: { (floatingInput, pair) in
+
+            guard let violation = pair.violation else {
+                floatingInput.floatingHint.textColor = floatingInput.setting?.accentColor
+                floatingInput.warningLbl.text = nil
+                if floatingInput.input.isFirstResponder {
+                    floatingInput.divider.backgroundColor = floatingInput.setting?.accentColor
+                }
                 return
             }
-            self?.floatingHint.textColor = self?.setting?.warningColor
-            if (self?.input.isFirstResponder)! { self?.divider.backgroundColor = self?.setting?.warningColor }
-            self?.warningLbl.text = voilation.message
-            self?.warningLbl.textColor = self?.setting?.warningColor
-
-            if let callback = voilation.callback {
+            floatingInput.floatingHint.textColor = floatingInput.setting?.warningColor
+            if (floatingInput.input.isFirstResponder) {
+                floatingInput.divider.backgroundColor = floatingInput.setting?.warningColor
+            }
+            floatingInput.warningLbl.text = violation.message
+            floatingInput.warningLbl.textColor = floatingInput.setting?.warningColor
+            if let callback = violation.callback {
                 callback()
             }
-        }.disposed(by: dispose)
-        
-        vm.highlightFloatinHint.bind { [weak self] (flag) in
-            
-            if flag, self?.floatingHintStatus == .hidden {
-                self?.floatingHintStatus = .visible
-                self?.showFloatingHint()
-            }            
-            if flag == false {
-                self?.floatingHintStatus = .hidden
-                self?.hideFloatingHint()
-            }
-        }.disposed(by: dispose)
+        })
     }
-    
-    private func showFloatingHint() {
-        UIView.animate(withDuration: 0.25) {
-            self.floatingHint.isHidden = false
-            self.floatingHint.alpha = 1.0
-            self.floatingHint.text = self.setting?.placeholder
-        }
-    }
-    
-    private func hideFloatingHint() {
-        self.floatingHint.isHidden = true        
-        self.floatingHint.alpha = 0.0
-        self.floatingHint.text = nil
+
+    var hintVisible: Binder<RYFloatingInput.HintVisibility> {
+
+        return Binder(base, binding: { (floatingInput, visibility) in
+
+            UIView.animate(withDuration: 0.3,  delay: 0.0, options: .curveEaseInOut, animations: {
+                floatingInput.floatingHint.isHidden = (visibility != .visible)
+                floatingInput.floatingHint.alpha = (visibility == .visible) ? 1.0 : 0.0
+                floatingInput.floatingHint.text = (visibility == .visible) ? floatingInput.setting?.placeholder : nil
+            })
+        })
     }
 }
