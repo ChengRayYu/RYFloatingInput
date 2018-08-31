@@ -145,19 +145,11 @@ private extension Reactive where Base: RYFloatingInput {
 
         return Binder(base, binding: { (floatingInput, visibility) in
 
-            switch visibility {
-            case .visible:
-                UIView.animate(withDuration: 0.25) {
-                    floatingInput.floatingHint.isHidden = false
-                    floatingInput.floatingHint.alpha = 1.0
-                    floatingInput.floatingHint.text = floatingInput.setting?.placeholder
-                }
-
-            case .hidden:
-                floatingInput.floatingHint.isHidden = true
-                floatingInput.floatingHint.alpha = 0.0
-                floatingInput.floatingHint.text = nil
-            }
+            UIView.animate(withDuration: 0.3,  delay: 0.0, options: .curveEaseInOut, animations: {
+                floatingInput.floatingHint.isHidden = (visibility != .visible)
+                floatingInput.floatingHint.alpha = (visibility == .visible) ? 1.0 : 0.0
+                floatingInput.floatingHint.text = (visibility == .visible) ? floatingInput.setting?.placeholder : nil
+            })
         })
     }
 }
