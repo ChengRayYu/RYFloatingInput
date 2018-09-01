@@ -26,7 +26,8 @@ pod 'RYFloatingInput'
 ## Getting Started
 #### Setup from InterfaceBuilder
 1. Drag a UIView instance into your UIViewController/UIView
-2. Change class type of the UIView to `RYFloatingInput`.
+2. Change the class of the UIView instance to `RYFloatingInput`.
+3. Change the module of the UIView instance to `RYFloatingInput`.
 2. Link to the IBOutlet instance of your UIViewController/UIView.
 
 #### Setup Programmitacally
@@ -48,7 +49,7 @@ self.view.addSubview(floatingInput)
 `RYFloatingInputSetting` is required for `RYFloatingInput` to work properly, which concise all the settings and customizations together into one single builder function. Here are the steps:
 1. Initialize `RYFloatingInputSetting` instance by using `RYFloatingInputSetting.Builder`
 2. Add features & customizations
-3. setup `RYFloatingInput` by created `RYFloatingInputSetting` instance
+3. Setup `RYFloatingInput` by created `RYFloatingInputSetting` instance
 
 Example:
 ```swift
