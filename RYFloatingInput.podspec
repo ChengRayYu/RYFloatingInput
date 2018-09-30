@@ -8,10 +8,10 @@ Pod::Spec.new do |s|
 
   s.homepage         = 'https://github.com/ChengRayYu/RYFloatingInput'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Ray ChengJui YU' => 'eebolue@gmail.com' }
+  s.author           = { 'Ray ChengJui YU' => 'ray.cj.yu@gmail.com' }
   s.source           = { :git => 'https://github.com/ChengRayYu/RYFloatingInput.git', :tag => s.version.to_s }
 
-  s.ios.deployment_target = '10.0'
+  s.ios.deployment_target = '8.0'
 
   s.source_files = ['RYFloatingInput/Classes/**/*', 'RYFloatingInput/Assets/**/*']
   s.dependency 'RxSwift', '~> 4.0'
