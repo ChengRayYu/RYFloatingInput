@@ -30,7 +30,7 @@
 /* Begin PBXFileReference section */
 		291FE0732EFD11D81E47152E /* Pods-RYFloatingInput_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RYFloatingInput_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RYFloatingInput_Tests/Pods-RYFloatingInput_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		2DDAC76279E4C07CF388EC03 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
-		3D93BCB16DFADEC1F5AE886C /* RYFloatingInput.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RYFloatingInput.podspec; path = ../RYFloatingInput.podspec; sourceTree = "<group>"; };
+		3D93BCB16DFADEC1F5AE886C /* RYFloatingInput.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RYFloatingInput.podspec; path = ../RYFloatingInput.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		4D2E61E635A5F6F732C9F674 /* Pods-RYFloatingInput_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RYFloatingInput_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-RYFloatingInput_Example/Pods-RYFloatingInput_Example.release.xcconfig"; sourceTree = "<group>"; };
 		51EEEA36F49B32E4DCD5DA7C /* Pods-RYFloatingInput_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RYFloatingInput_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RYFloatingInput_Example/Pods-RYFloatingInput_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* RYFloatingInput_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RYFloatingInput_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,7 +171,6 @@
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
 				AAB26127E825CBA3A7C1D184 /* [CP] Embed Pods Frameworks */,
-				ACC3B10C4D3640F5753FBF1B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -190,8 +189,6 @@
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
-				6C6D13546663CA7DBF63AF04 /* [CP] Embed Pods Frameworks */,
-				C753800AD8A47A11F2FD7221 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -265,21 +262,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6C6D13546663CA7DBF63AF04 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RYFloatingInput_Tests/Pods-RYFloatingInput_Tests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		AAB26127E825CBA3A7C1D184 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -300,36 +282,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RYFloatingInput_Example/Pods-RYFloatingInput_Example-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		ACC3B10C4D3640F5753FBF1B /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RYFloatingInput_Example/Pods-RYFloatingInput_Example-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C753800AD8A47A11F2FD7221 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RYFloatingInput_Tests/Pods-RYFloatingInput_Tests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DFF74B8982B83E04EE5A83E8 /* [CP] Check Pods Manifest.lock */ = {
@@ -527,13 +479,14 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = RYFloatingInput/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -545,13 +498,14 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = RYFloatingInput/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -572,7 +526,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -589,7 +543,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
