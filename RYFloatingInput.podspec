@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'RYFloatingInput'
-  s.version          = '0.1.5'
+  s.version          = '0.1.6'
   s.summary          = 'A customizable and flexible textfield control written in Swift.'
   s.description      = <<-DESC
                        RYFlotingInput, inspired by "Floating Label Pattern" and implemented with RxSwift & mvvm pattern, provides a fully-customizable textfield input control along with painless input text validation.
