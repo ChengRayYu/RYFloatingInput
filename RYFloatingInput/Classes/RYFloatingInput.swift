@@ -24,7 +24,7 @@ public extension RYFloatingInput {
         self.input.placeholder = setting.placeholder
         self.input.isSecureTextEntry = setting.isSecure ?? false
         self.input.attributedPlaceholder = NSAttributedString(string: setting.placeholder ?? "",
-                                                              attributes: [NSAttributedStringKey.foregroundColor: setting.placeholderColor])
+                                                              attributes: [NSAttributedString.Key.foregroundColor: setting.placeholderColor])
         self.divider.backgroundColor = setting.dividerColor
         self.warningLbl.textColor = setting.accentColor
 
