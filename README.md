@@ -152,6 +152,6 @@ RYFloatingInput is available under the MIT license. See the LICENSE file for mor
 
 
 ## Author
-Ray ChengJui YU - eebolue@gmail.com
+Ray ChengJui YU - ray.cj.yu@gmail.com
 
 
