@@ -15,7 +15,7 @@ internal class RYFloatingInputViewModel {
   internal let inputStatusDrv: Driver<RYFloatingInput.Status>
   internal let hintVisibleDrv: Driver<RYFloatingInput.HintVisibility>
 
-  internal init(input: Driver<String>, dependency: (maxLength: Int?, inputType: RYFloatingInput.InputType?)) {
+  internal init(input: Driver<String>, dependency: (minLength: Int?, maxLength: Int?, inputType: RYFloatingInput.InputType?)) {
 
     inputStatusDrv = input
       .map({ (content) -> RYFloatingInput.Status in
@@ -24,6 +24,9 @@ internal class RYFloatingInputViewModel {
         }
         if let rp = dependency.inputType?.pattern, RYFloatingInputViewModel.regex(pattern: rp, input: content) {
           return .notValid(.inputTypeViolated)
+        }
+        if let minL = dependency.minLength, content.count < minL {
+          return .notValid(.minLengthViolated)
         }
         if let ml = dependency.maxLength, content.count >= ml {
           return .notValid(.maxLengthViolated)

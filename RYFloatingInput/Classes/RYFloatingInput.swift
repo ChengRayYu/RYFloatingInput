@@ -97,7 +97,8 @@ public class RYFloatingInput: UIView {
       .disposed(by: disposeBag)
 
     let vm = RYFloatingInputViewModel(input: self.input.rx.text.orEmpty.asDriver(),
-                                      dependency: (maxLength: self.setting?.maxLength,
+                                      dependency: (minLength: self.setting?.minLength,
+                                                   maxLength: self.setting?.maxLength,
                                                    inputType: self.setting?.inputType))
 
     vm.inputStatusDrv
@@ -107,6 +108,7 @@ public class RYFloatingInput: UIView {
         case .notValid(let violatedStatus):
           switch violatedStatus {
           case .inputTypeViolated:    return (violatedStatus, self.setting?.inputTypeViolation)
+          case .minLengthViolated: return (violatedStatus, self.setting?.minLengthViolation)
           case .maxLengthViolated:    return (violatedStatus, self.setting?.maxLengthViolation)
           case .emptyViolated: return (violatedStatus, nil)
           case .valid:  return (violatedStatus, nil)
