@@ -33,7 +33,11 @@ public extension RYFloatingInput {
     }
     self.rx()
   }
-
+  
+  public func clearText() {
+    self.input.text = ""
+  }
+  
   public func text() -> String? {
     return self.input.text
   }
