@@ -41,7 +41,11 @@ public extension RYFloatingInput {
   public func setEnabled(_ flag: Bool? = true) {
     self.input.isUserInteractionEnabled = flag!
   }
-
+  
+  public func setFirstResponder() {
+    input.becomeFirstResponder()
+  }
+  
   public override func resignFirstResponder() -> Bool {
     return input.resignFirstResponder()
   }
