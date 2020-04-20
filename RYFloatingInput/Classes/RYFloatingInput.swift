@@ -42,6 +42,14 @@ public extension RYFloatingInput {
     return self.input.text
   }
 
+  public func setKeyboardType(_ type:UIKeyboardType) {
+    self.input.keyboardType = type
+  }
+  
+  public func setKeyboardReturnType(_ type:UIReturnKeyType) {
+    self.input.returnKeyType = type
+  }
+  
   public func setEnabled(_ flag: Bool? = true) {
     self.input.isUserInteractionEnabled = flag!
   }
