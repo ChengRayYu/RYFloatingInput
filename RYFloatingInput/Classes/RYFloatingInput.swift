@@ -38,6 +38,10 @@ public extension RYFloatingInput {
     self.input.text = ""
   }
   
+  public func setText(_ text:String) {
+    self.input.text = text
+  }
+  
   public func text() -> String? {
     return self.input.text
   }
