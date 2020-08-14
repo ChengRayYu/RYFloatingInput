@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		54B2A28CCCD29D7CBBE53529 /* Pods_RYFloatingInput_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B48841DF072F66D0C7EDBEA0 /* Pods_RYFloatingInput_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
-		BE0F903F7C1491E4365E05DD /* Pods_RYFloatingInput_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E3DC6036D08402B82E401B3 /* Pods_RYFloatingInput_Tests.framework */; };
+		96C8E58B994850C816582DD2 /* Pods_RYFloatingInput_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E206732A051EA861D2714CC7 /* Pods_RYFloatingInput_Example.framework */; };
+		C1C7405FBB161F9BFD4BC567 /* Pods_RYFloatingInput_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63DD15A95F6CB688611A4209 /* Pods_RYFloatingInput_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,11 +28,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		291FE0732EFD11D81E47152E /* Pods-RYFloatingInput_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RYFloatingInput_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RYFloatingInput_Tests/Pods-RYFloatingInput_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		1736330450EEC1B86981BCA0 /* Pods-RYFloatingInput_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RYFloatingInput_Tests.debug.xcconfig"; path = "Target Support Files/Pods-RYFloatingInput_Tests/Pods-RYFloatingInput_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		22B315519ECF7A13AD4AD5F8 /* Pods-RYFloatingInput_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RYFloatingInput_Example.debug.xcconfig"; path = "Target Support Files/Pods-RYFloatingInput_Example/Pods-RYFloatingInput_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		2DDAC76279E4C07CF388EC03 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		3D93BCB16DFADEC1F5AE886C /* RYFloatingInput.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = RYFloatingInput.podspec; path = ../RYFloatingInput.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		4D2E61E635A5F6F732C9F674 /* Pods-RYFloatingInput_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RYFloatingInput_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-RYFloatingInput_Example/Pods-RYFloatingInput_Example.release.xcconfig"; sourceTree = "<group>"; };
-		51EEEA36F49B32E4DCD5DA7C /* Pods-RYFloatingInput_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RYFloatingInput_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RYFloatingInput_Example/Pods-RYFloatingInput_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		42DEBC29C196E3A77BF42C4D /* Pods-RYFloatingInput_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RYFloatingInput_Example.release.xcconfig"; path = "Target Support Files/Pods-RYFloatingInput_Example/Pods-RYFloatingInput_Example.release.xcconfig"; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* RYFloatingInput_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RYFloatingInput_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -43,10 +43,10 @@
 		607FACE51AFB9204008FA782 /* RYFloatingInput_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RYFloatingInput_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		63DD15A95F6CB688611A4209 /* Pods_RYFloatingInput_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RYFloatingInput_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6865737DD3C34AAEC539DFB0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		9E3DC6036D08402B82E401B3 /* Pods_RYFloatingInput_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RYFloatingInput_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A00A1328C46C70AD8937E799 /* Pods-RYFloatingInput_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RYFloatingInput_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RYFloatingInput_Tests/Pods-RYFloatingInput_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		B48841DF072F66D0C7EDBEA0 /* Pods_RYFloatingInput_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RYFloatingInput_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		90D9384DE800FD3DF25AEE58 /* Pods-RYFloatingInput_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RYFloatingInput_Tests.release.xcconfig"; path = "Target Support Files/Pods-RYFloatingInput_Tests/Pods-RYFloatingInput_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		E206732A051EA861D2714CC7 /* Pods_RYFloatingInput_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RYFloatingInput_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				54B2A28CCCD29D7CBBE53529 /* Pods_RYFloatingInput_Example.framework in Frameworks */,
+				96C8E58B994850C816582DD2 /* Pods_RYFloatingInput_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,22 +62,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE0F903F7C1491E4365E05DD /* Pods_RYFloatingInput_Tests.framework in Frameworks */,
+				C1C7405FBB161F9BFD4BC567 /* Pods_RYFloatingInput_Tests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3D707BF9EB52BDCECDA6B801 /* Pods */ = {
+		34EC8022C1258F0EB8019A9E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				51EEEA36F49B32E4DCD5DA7C /* Pods-RYFloatingInput_Example.debug.xcconfig */,
-				4D2E61E635A5F6F732C9F674 /* Pods-RYFloatingInput_Example.release.xcconfig */,
-				291FE0732EFD11D81E47152E /* Pods-RYFloatingInput_Tests.debug.xcconfig */,
-				A00A1328C46C70AD8937E799 /* Pods-RYFloatingInput_Tests.release.xcconfig */,
+				22B315519ECF7A13AD4AD5F8 /* Pods-RYFloatingInput_Example.debug.xcconfig */,
+				42DEBC29C196E3A77BF42C4D /* Pods-RYFloatingInput_Example.release.xcconfig */,
+				1736330450EEC1B86981BCA0 /* Pods-RYFloatingInput_Tests.debug.xcconfig */,
+				90D9384DE800FD3DF25AEE58 /* Pods-RYFloatingInput_Tests.release.xcconfig */,
 			);
 			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		607FACC71AFB9204008FA782 = {
@@ -87,8 +88,8 @@
 				607FACD21AFB9204008FA782 /* Example for RYFloatingInput */,
 				607FACE81AFB9204008FA782 /* Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
-				3D707BF9EB52BDCECDA6B801 /* Pods */,
-				AB1801E36A9BF78317E24A1B /* Frameworks */,
+				34EC8022C1258F0EB8019A9E /* Pods */,
+				E8FECFC5925ADBFB33769A8B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -150,11 +151,11 @@
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
 		};
-		AB1801E36A9BF78317E24A1B /* Frameworks */ = {
+		E8FECFC5925ADBFB33769A8B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B48841DF072F66D0C7EDBEA0 /* Pods_RYFloatingInput_Example.framework */,
-				9E3DC6036D08402B82E401B3 /* Pods_RYFloatingInput_Tests.framework */,
+				E206732A051EA861D2714CC7 /* Pods_RYFloatingInput_Example.framework */,
+				63DD15A95F6CB688611A4209 /* Pods_RYFloatingInput_Tests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -166,11 +167,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "RYFloatingInput_Example" */;
 			buildPhases = (
-				DFF74B8982B83E04EE5A83E8 /* [CP] Check Pods Manifest.lock */,
+				FB3712DA7A447CD36954689E /* [CP] Check Pods Manifest.lock */,
 				607FACCC1AFB9204008FA782 /* Sources */,
 				607FACCD1AFB9204008FA782 /* Frameworks */,
 				607FACCE1AFB9204008FA782 /* Resources */,
-				AAB26127E825CBA3A7C1D184 /* [CP] Embed Pods Frameworks */,
+				7CF246247BE9693458444EC3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -185,7 +186,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 607FACF21AFB9204008FA782 /* Build configuration list for PBXNativeTarget "RYFloatingInput_Tests" */;
 			buildPhases = (
-				E7D28312506A569B78C39D8C /* [CP] Check Pods Manifest.lock */,
+				8C29596EF9A36336F666BF38 /* [CP] Check Pods Manifest.lock */,
 				607FACE11AFB9204008FA782 /* Sources */,
 				607FACE21AFB9204008FA782 /* Frameworks */,
 				607FACE31AFB9204008FA782 /* Resources */,
@@ -263,7 +264,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		AAB26127E825CBA3A7C1D184 /* [CP] Embed Pods Frameworks */ = {
+		7CF246247BE9693458444EC3 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -287,36 +288,44 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RYFloatingInput_Example/Pods-RYFloatingInput_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		DFF74B8982B83E04EE5A83E8 /* [CP] Check Pods Manifest.lock */ = {
+		8C29596EF9A36336F666BF38 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RYFloatingInput_Example-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-RYFloatingInput_Tests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E7D28312506A569B78C39D8C /* [CP] Check Pods Manifest.lock */ = {
+		FB3712DA7A447CD36954689E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RYFloatingInput_Tests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-RYFloatingInput_Example-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -420,6 +429,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -467,6 +477,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -476,13 +487,13 @@
 		};
 		607FACF01AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 51EEEA36F49B32E4DCD5DA7C /* Pods-RYFloatingInput_Example.debug.xcconfig */;
+			baseConfigurationReference = 22B315519ECF7A13AD4AD5F8 /* Pods-RYFloatingInput_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = RYFloatingInput/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
@@ -495,13 +506,13 @@
 		};
 		607FACF11AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4D2E61E635A5F6F732C9F674 /* Pods-RYFloatingInput_Example.release.xcconfig */;
+			baseConfigurationReference = 42DEBC29C196E3A77BF42C4D /* Pods-RYFloatingInput_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = RYFloatingInput/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
@@ -514,7 +525,7 @@
 		};
 		607FACF31AFB9204008FA782 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 291FE0732EFD11D81E47152E /* Pods-RYFloatingInput_Tests.debug.xcconfig */;
+			baseConfigurationReference = 1736330450EEC1B86981BCA0 /* Pods-RYFloatingInput_Tests.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -535,7 +546,7 @@
 		};
 		607FACF41AFB9204008FA782 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A00A1328C46C70AD8937E799 /* Pods-RYFloatingInput_Tests.release.xcconfig */;
+			baseConfigurationReference = 90D9384DE800FD3DF25AEE58 /* Pods-RYFloatingInput_Tests.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
