@@ -20,15 +20,15 @@ internal class RYFloatingInputViewModel {
         inputViolatedDrv = input
             .map({ (content) -> RYFloatingInput.ViolationStatus in
 
-                guard content.count > 0 else {
-                    return .valid
-                }
-                guard let rp = dependency.inputType?.pattern, !RYFloatingInputViewModel.regex(pattern: rp, input: content) else {
-                    return .inputTypeViolated
-                }
-                guard let ml = dependency.maxLength, content.count < ml else {
-                    return .maxLengthViolated
-                }
+//                guard content.count > 0 else {
+//                    return .valid
+//                }
+//                guard let rp = dependency.inputType?.pattern, !RYFloatingInputViewModel.regex(pattern: rp, input: content) else {
+//                    return .inputTypeViolated
+//                }
+//                guard let ml = dependency.maxLength, content.count < ml else {
+//                    return .maxLengthViolated
+//                }
                 return .valid
             })
 

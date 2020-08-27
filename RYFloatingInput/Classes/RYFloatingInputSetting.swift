@@ -10,7 +10,7 @@ import UIKit
 
 public extension RYFloatingInputSetting {
 
-    public class Builder {
+    class Builder {
 
         fileprivate var _theme: RYFloatingInput.Theme = .standard
         fileprivate var _backgroundColor: UIColor?
@@ -25,12 +25,17 @@ public extension RYFloatingInputSetting {
         fileprivate var _dividerWeight: RYFloatingInput.DividerWeight = .regular
         fileprivate var _placeholder: String?
         fileprivate var _secure: Bool = false
-
+        fileprivate var _keyboardType: UIKeyboardType = .default
         fileprivate var _maxLength: Int?
         fileprivate var _maxLengthViolation: RYFloatingInput.InputViolation?
         fileprivate var _inputType: RYFloatingInput.InputType?
         fileprivate var _inputTypeViolation: RYFloatingInput.InputViolation?
 
+        public func keyboardType(_ type: UIKeyboardType) -> Builder {
+            _keyboardType = type
+            return self
+        }
+        
         public static func instance() -> Builder {
             return Builder()
         }
@@ -123,6 +128,7 @@ public class RYFloatingInputSetting {
     internal let accentColor: UIColor
     internal let warningColor: UIColor
 
+    internal let keyboardType: UIKeyboardType
     internal let iconImage: UIImage?
     internal let dividerHeight: CGFloat
     internal let placeholder: String?
@@ -152,6 +158,7 @@ public class RYFloatingInputSetting {
         self.maxLengthViolation = builder._maxLengthViolation
         self.inputType = builder._inputType
         self.inputTypeViolation = builder._inputTypeViolation
+        self.keyboardType = builder._keyboardType
     }
 
 

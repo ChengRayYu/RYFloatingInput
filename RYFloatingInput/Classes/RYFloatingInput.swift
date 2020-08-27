@@ -12,7 +12,7 @@ import RxCocoa
 
 public extension RYFloatingInput {
 
-    public func setup(setting: RYFloatingInputSetting) {
+    func setup(setting: RYFloatingInputSetting) {
 
         self.setting = setting
 
@@ -25,6 +25,7 @@ public extension RYFloatingInput {
         self.input.isSecureTextEntry = setting.isSecure ?? false
         self.input.attributedPlaceholder = NSAttributedString(string: setting.placeholder ?? "",
                                                               attributes: [NSAttributedString.Key.foregroundColor: setting.placeholderColor])
+        self.input.keyboardType = setting.keyboardType
         self.divider.backgroundColor = setting.dividerColor
         self.warningLbl.textColor = setting.accentColor
 
@@ -34,16 +35,25 @@ public extension RYFloatingInput {
         self.rx()
     }
 
-    public func text() -> String? {
+    func text() -> String? {
         return self.input.text
     }
 
-    public func setEnabled(_ flag: Bool? = true) {
+    func setEnabled(_ flag: Bool? = true) {
         self.input.isUserInteractionEnabled = flag!
     }
 
-    public override func resignFirstResponder() -> Bool {
+    override func resignFirstResponder() -> Bool {
         return input.resignFirstResponder()
+    }
+    
+    func triggerWarning(_ message: String) {
+        floatingHint.textColor = setting?.warningColor
+        if (input.isFirstResponder) {
+            divider.backgroundColor = setting?.warningColor
+        }
+        warningLbl.text = message
+        warningLbl.textColor = setting?.warningColor
     }
 }
 

@@ -10,7 +10,7 @@ import UIKit
 
 public extension RYFloatingInput {
     
-    public enum InputType {
+    enum InputType {
         case number
         case regex(pattern: String)
         
@@ -22,13 +22,13 @@ public extension RYFloatingInput {
         }
     }
     
-    public enum DividerWeight: CGFloat {
+    enum DividerWeight: CGFloat {
         case thin       = 0.5
         case regular    = 1.0
         case bold       = 2.0
     }
     
-    public enum Theme {
+    enum Theme {
         
         case standard
         case dark
@@ -94,13 +94,13 @@ public extension RYFloatingInput {
 
 internal extension RYFloatingInput {
 
-    internal enum ViolationStatus {
+    enum ViolationStatus {
         case valid
         case maxLengthViolated
         case inputTypeViolated
     }
 
-    internal enum HintVisibility {
+    enum HintVisibility {
         case visible
         case hidden
     }
