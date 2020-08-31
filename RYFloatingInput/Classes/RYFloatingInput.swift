@@ -30,10 +30,12 @@ public extension RYFloatingInput {
         self.divider.backgroundColor = setting.dividerColor
         self.warningLbl.textColor = setting.accentColor
 
+        // Left side icon
         if setting.iconImage != nil {
             inputLeadingMargin.constant = 48
         }
         
+        // Right side icon
         if setting.rightIconImage != nil {
             inputTrailingMargin.constant = 48
         }
