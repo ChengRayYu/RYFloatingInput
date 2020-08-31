@@ -18,6 +18,7 @@ public extension RYFloatingInput {
 
         self.backgroundColor = setting.backgroundColor
         self.icon.image = setting.iconImage
+        self.rightIcon.image = setting.rightIconImage
         self.input.textColor = setting.textColor
         self.input.tintColor = setting.cursorColor
         self.dividerHeight.constant = setting.dividerHeight
@@ -31,6 +32,10 @@ public extension RYFloatingInput {
 
         if setting.iconImage != nil {
             inputLeadingMargin.constant = 48
+        }
+        
+        if setting.rightIconImage != nil {
+            inputTrailingMargin.constant = 48
         }
         self.rx()
     }
@@ -62,12 +67,14 @@ public class RYFloatingInput: UIView {
     public typealias InputViolation = (message: String, callback: (() -> Void)?)
 
     @IBOutlet fileprivate weak var icon: UIImageView!
+    @IBOutlet fileprivate weak var rightIcon: UIImageView!
     @IBOutlet fileprivate weak var floatingHint: UILabel!
     @IBOutlet fileprivate weak var input: UITextField!
     @IBOutlet fileprivate weak var divider: UIView!
     @IBOutlet fileprivate weak var dividerHeight: NSLayoutConstraint!
     @IBOutlet fileprivate weak var warningLbl: UILabel!
     @IBOutlet fileprivate weak var inputLeadingMargin: NSLayoutConstraint!
+    @IBOutlet fileprivate weak var inputTrailingMargin: NSLayoutConstraint!
 
     fileprivate var setting: RYFloatingInputSetting?
     fileprivate let disposeBag = DisposeBag()

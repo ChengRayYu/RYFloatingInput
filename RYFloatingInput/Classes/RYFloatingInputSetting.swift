@@ -22,6 +22,7 @@ public extension RYFloatingInputSetting {
         fileprivate var _warningColor: UIColor?
 
         fileprivate var _iconImage: UIImage?
+        fileprivate var _rightIconImage: UIImage?
         fileprivate var _dividerWeight: RYFloatingInput.DividerWeight = .regular
         fileprivate var _placeholder: String?
         fileprivate var _secure: Bool = false
@@ -84,6 +85,11 @@ public extension RYFloatingInputSetting {
             _iconImage = image
             return self
         }
+        
+        public func rightIconImage(_ image: UIImage) -> Builder {
+            _rightIconImage = image
+            return self
+        }
 
         public func dividerWeight(_ weight: RYFloatingInput.DividerWeight) -> Builder {
             _dividerWeight = weight
@@ -130,6 +136,8 @@ public class RYFloatingInputSetting {
 
     internal let keyboardType: UIKeyboardType
     internal let iconImage: UIImage?
+    internal let rightIconImage: UIImage?
+    
     internal let dividerHeight: CGFloat
     internal let placeholder: String?
     internal let isSecure: Bool?
@@ -150,6 +158,8 @@ public class RYFloatingInputSetting {
         self.warningColor = builder._warningColor ?? builder._theme.warning
 
         self.iconImage = builder._iconImage
+        self.rightIconImage = builder._rightIconImage
+        
         self.dividerHeight = builder._dividerWeight.rawValue
         self.placeholder = builder._placeholder
         self.isSecure = builder._secure

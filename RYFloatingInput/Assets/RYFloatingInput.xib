@@ -15,6 +15,8 @@
                 <outlet property="icon" destination="1vt-3E-JeI" id="pxb-LK-npc"/>
                 <outlet property="input" destination="EQU-37-ast" id="dEK-eM-9Q4"/>
                 <outlet property="inputLeadingMargin" destination="6F2-x3-ywS" id="1tB-nL-Mrt"/>
+                <outlet property="inputTrailingMargin" destination="jPv-LQ-jax" id="nc8-9w-Xkb"/>
+                <outlet property="rightIcon" destination="NRi-vH-cmC" id="RVA-9f-mLL"/>
                 <outlet property="warningLbl" destination="dHT-89-3pH" id="NDs-lQ-JVL"/>
             </connections>
         </placeholder>
@@ -50,6 +52,13 @@
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
+                        <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NRi-vH-cmC">
+                            <rect key="frame" x="324" y="22.666666666666671" width="24" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="24" id="kMP-ah-n02"/>
+                                <constraint firstAttribute="height" constant="24" id="w5N-6D-L2B"/>
+                            </constraints>
+                        </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wo3-k0-iPU" userLabel="Divider parent">
                             <rect key="frame" x="12" y="54" width="336" height="1"/>
                             <subviews>
@@ -84,6 +93,8 @@
                         <constraint firstItem="wo3-k0-iPU" firstAttribute="top" secondItem="EQU-37-ast" secondAttribute="bottom" constant="10" id="A4I-dG-5yg"/>
                         <constraint firstItem="dHT-89-3pH" firstAttribute="trailing" secondItem="EQU-37-ast" secondAttribute="trailing" id="Kpi-s3-V9x"/>
                         <constraint firstItem="wo3-k0-iPU" firstAttribute="leading" secondItem="EQU-37-ast" secondAttribute="leading" id="OtO-Lg-DUr"/>
+                        <constraint firstAttribute="trailing" secondItem="NRi-vH-cmC" secondAttribute="trailing" constant="12" id="QuF-Dr-IUK"/>
+                        <constraint firstItem="NRi-vH-cmC" firstAttribute="centerY" secondItem="EQU-37-ast" secondAttribute="centerY" id="VmC-ok-xhJ"/>
                         <constraint firstItem="dHT-89-3pH" firstAttribute="leading" secondItem="EQU-37-ast" secondAttribute="leading" id="eE9-iN-YYp"/>
                         <constraint firstItem="EQU-37-ast" firstAttribute="top" secondItem="jqN-2n-YhU" secondAttribute="bottom" constant="10" id="hRf-Fr-6q8"/>
                         <constraint firstAttribute="trailing" secondItem="EQU-37-ast" secondAttribute="trailing" constant="12" id="jPv-LQ-jax"/>

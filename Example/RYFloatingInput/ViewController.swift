@@ -30,6 +30,7 @@ class ViewController: UIViewController {
         cellInput.setup(setting:
             RYFloatingInputSetting.Builder.instance()
                 .placeholer("Cellphone")
+                .rightIconImage(UIImage(named: "ic_num")!)
                 .iconImage(UIImage(named: "ic_num")!)
                 .maxLength(10, onViolated: (message: "Exceed Max Length", callback: nil))
                 .inputType(.number, onViolated: (message: "Number Only", callback: nil))
