@@ -41,6 +41,10 @@ public extension RYFloatingInput {
         }
         self.rx()
     }
+    
+    func inputField() -> UITextField {
+        return self.input
+    }
 
     func text() -> String? {
         return self.input.text
