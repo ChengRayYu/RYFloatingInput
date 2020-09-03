@@ -20,35 +20,38 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kSO-fX-HV0" customClass="RYFloatingInput" customModule="RYFloatingInput">
-                                <rect key="frame" x="8" y="150" width="359" height="80"/>
+                                <rect key="frame" x="8" y="150" width="359" height="46"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="uPF-3A-hdu"/>
+                                    <constraint firstAttribute="height" constant="46" id="uPF-3A-hdu"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="parentHeight" destination="uPF-3A-hdu" id="b3O-Kg-HJK"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HaX-nu-n52" customClass="RYFloatingInput" customModule="RYFloatingInput">
-                                <rect key="frame" x="8" y="270" width="359" height="80"/>
+                                <rect key="frame" x="8" y="236" width="359" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="rmw-rb-mNu"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i3f-SL-ISv" customClass="RYFloatingInput" customModule="RYFloatingInput">
-                                <rect key="frame" x="187.5" y="350" width="179.5" height="80"/>
+                                <rect key="frame" x="187.5" y="316" width="179.5" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="n5s-oj-dHr"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O7a-e3-Td5" customClass="RYFloatingInput" customModule="RYFloatingInput">
-                                <rect key="frame" x="8" y="350" width="179.5" height="80"/>
+                                <rect key="frame" x="8" y="316" width="179.5" height="80"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="fWN-a6-4qf"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgn-kk-drY">
-                                <rect key="frame" x="160" y="478" width="55" height="30"/>
+                                <rect key="frame" x="160" y="444" width="55" height="30"/>
                                 <state key="normal" title="Validate">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
