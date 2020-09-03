@@ -63,7 +63,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wo3-k0-iPU" userLabel="Divider parent">
                             <rect key="frame" x="0.0" y="42" width="360" height="1"/>
                             <subviews>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TSD-Ca-U7P">
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TSD-Ca-U7P" userLabel="sub divider view">
                                     <rect key="frame" x="0.0" y="0.0" width="360" height="1"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="1" id="KI5-qj-SDJ"/>
