@@ -78,6 +78,8 @@ class ViewController: UIViewController {
                 cellInput.triggerWarning("Mobile number cannot be blank.")
             } else if text.count != 10 {
                 cellInput.triggerWarning("Mobile number must be of 10 digit.")
+            } else {
+                cellInput.triggerWarning(nil)
             }
         }
     }

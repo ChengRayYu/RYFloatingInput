@@ -58,13 +58,24 @@ public extension RYFloatingInput {
         return input.resignFirstResponder()
     }
     
-    func triggerWarning(_ message: String) {
+    func triggerWarning(_ message: String?) {
+        guard let warningMessage = message else {
+            floatingHint.textColor = setting?.accentColor
+            warningLbl.text = nil
+            parentHeight.constant = 46
+            if input.isFirstResponder {
+                divider.backgroundColor = setting?.accentColor
+            }
+            return
+        }
+        
         floatingHint.textColor = setting?.warningColor
         if (input.isFirstResponder) {
             divider.backgroundColor = setting?.warningColor
         }
-        warningLbl.text = message
+        warningLbl.text = warningMessage
         warningLbl.textColor = setting?.warningColor
+        parentHeight.constant = 65
     }
 }
 
@@ -81,7 +92,8 @@ public class RYFloatingInput: UIView {
     @IBOutlet fileprivate weak var warningLbl: UILabel!
     @IBOutlet fileprivate weak var inputLeadingMargin: NSLayoutConstraint!
     @IBOutlet fileprivate weak var inputTrailingMargin: NSLayoutConstraint!
-
+    @IBOutlet fileprivate weak var parentHeight: NSLayoutConstraint!
+    
     fileprivate var setting: RYFloatingInputSetting?
     fileprivate let disposeBag = DisposeBag()
 
@@ -147,6 +159,7 @@ private extension Reactive where Base: RYFloatingInput {
             guard let violation = pair.violation else {
                 floatingInput.floatingHint.textColor = floatingInput.setting?.accentColor
                 floatingInput.warningLbl.text = nil
+                floatingInput.parentHeight.constant = 46
                 if floatingInput.input.isFirstResponder {
                     floatingInput.divider.backgroundColor = floatingInput.setting?.accentColor
                 }
@@ -158,6 +171,7 @@ private extension Reactive where Base: RYFloatingInput {
             }
             floatingInput.warningLbl.text = violation.message
             floatingInput.warningLbl.textColor = floatingInput.setting?.warningColor
+            floatingInput.parentHeight.constant = 65
             if let callback = violation.callback {
                 callback()
             }
