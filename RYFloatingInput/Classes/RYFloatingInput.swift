@@ -28,7 +28,8 @@ public extension RYFloatingInput {
                                                               attributes: [NSAttributedString.Key.foregroundColor: setting.placeholderColor])
         self.input.keyboardType = setting.keyboardType
         self.divider.backgroundColor = setting.dividerColor
-        self.warningLbl.textColor = setting.accentColor
+        self.warningLbl.textColor = setting.warningColor
+        self.floatingHint.textColor = setting.hintAccentColor
 
         // Left side icon
         if setting.iconImage != nil {
@@ -60,11 +61,11 @@ public extension RYFloatingInput {
     
     func triggerWarning(_ message: String?) {
         guard let warningMessage = message else {
-            floatingHint.textColor = setting?.accentColor
+            floatingHint.textColor = setting?.hintAccentColor
             warningLbl.text = nil
             parentHeight.constant = 46
             if input.isFirstResponder {
-                divider.backgroundColor = setting?.accentColor
+                divider.backgroundColor = setting?.dividerAccentColor
             }
             return
         }
@@ -125,7 +126,8 @@ public class RYFloatingInput: UIView {
 
         input.rx.controlEvent([.editingDidEnd, .editingDidBegin])
             .subscribe(onNext: { _ in
-                self.divider.backgroundColor = self.input.isFirstResponder ? self.setting?.accentColor : self.setting?.dividerColor
+                self.divider.backgroundColor = self.input.isFirstResponder ? self.setting?.dividerAccentColor : self.setting?.dividerColor
+                self.divider.backgroundColor = self.input.isFirstResponder ? self.setting?.dividerAccentColor : self.setting?.dividerColor
             })
             .disposed(by: disposeBag)
 
@@ -157,11 +159,11 @@ private extension Reactive where Base: RYFloatingInput {
         return Binder(base, binding: { (floatingInput, pair) in
 
             guard let violation = pair.violation else {
-                floatingInput.floatingHint.textColor = floatingInput.setting?.accentColor
+                floatingInput.floatingHint.textColor = floatingInput.setting?.hintAccentColor
                 floatingInput.warningLbl.text = nil
                 floatingInput.parentHeight.constant = 46
                 if floatingInput.input.isFirstResponder {
-                    floatingInput.divider.backgroundColor = floatingInput.setting?.accentColor
+                    floatingInput.divider.backgroundColor = floatingInput.setting?.dividerAccentColor
                 }
                 return
             }
