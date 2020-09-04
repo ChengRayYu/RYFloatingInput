@@ -18,7 +18,8 @@ public extension RYFloatingInputSetting {
         fileprivate var _placeholderColor: UIColor?
         fileprivate var _dividerColor: UIColor?
         fileprivate var _cursorColor: UIColor?
-        fileprivate var _accentColor: UIColor?
+        fileprivate var _hintAccentColor: UIColor?
+        fileprivate var _dividerAccentColor: UIColor?
         fileprivate var _warningColor: UIColor?
 
         fileprivate var _iconImage: UIImage?
@@ -71,8 +72,13 @@ public extension RYFloatingInputSetting {
             return self
         }
 
-        public func accentColor(_ color: UIColor) -> Builder {
-            _accentColor = color
+        public func dividerAccentColor(_ color: UIColor) -> Builder {
+            _dividerAccentColor = color
+            return self
+        }
+        
+        public func hintAccentColor(_ color: UIColor) -> Builder {
+            _hintAccentColor = color
             return self
         }
 
@@ -131,7 +137,8 @@ public class RYFloatingInputSetting {
     internal let placeholderColor: UIColor
     internal let dividerColor: UIColor
     internal let cursorColor: UIColor
-    internal let accentColor: UIColor
+    internal let hintAccentColor: UIColor
+    internal let dividerAccentColor: UIColor
     internal let warningColor: UIColor
 
     internal let keyboardType: UIKeyboardType
@@ -154,7 +161,8 @@ public class RYFloatingInputSetting {
         self.placeholderColor = builder._placeholderColor ?? builder._theme.placeholder
         self.dividerColor = builder._dividerColor ?? builder._theme.divider
         self.cursorColor = builder._cursorColor ?? builder._theme.cursor
-        self.accentColor = builder._accentColor ?? builder._theme.accent
+        self.hintAccentColor = builder._hintAccentColor ?? builder._theme.accent
+        self.dividerAccentColor = builder._dividerAccentColor ?? builder._theme.accent
         self.warningColor = builder._warningColor ?? builder._theme.warning
 
         self.iconImage = builder._iconImage
