@@ -64,16 +64,16 @@ public extension RYFloatingInput {
             floatingHint.textColor = setting?.hintAccentColor
             warningLbl.text = nil
             parentHeight.constant = 46
-            if input.isFirstResponder {
+//            if input.isFirstResponder {
                 divider.backgroundColor = setting?.dividerAccentColor
-            }
+//            }
             return
         }
         
         floatingHint.textColor = setting?.warningColor
-        if (input.isFirstResponder) {
+//        if (input.isFirstResponder) {
             divider.backgroundColor = setting?.warningColor
-        }
+//        }
         warningLbl.text = warningMessage
         warningLbl.textColor = setting?.warningColor
         parentHeight.constant = 65
@@ -162,15 +162,15 @@ private extension Reactive where Base: RYFloatingInput {
                 floatingInput.floatingHint.textColor = floatingInput.setting?.hintAccentColor
                 floatingInput.warningLbl.text = nil
                 floatingInput.parentHeight.constant = 46
-                if floatingInput.input.isFirstResponder {
+//                if floatingInput.input.isFirstResponder {
                     floatingInput.divider.backgroundColor = floatingInput.setting?.dividerAccentColor
-                }
+//                }
                 return
             }
             floatingInput.floatingHint.textColor = floatingInput.setting?.warningColor
-            if (floatingInput.input.isFirstResponder) {
+//            if (floatingInput.input.isFirstResponder) {
                 floatingInput.divider.backgroundColor = floatingInput.setting?.warningColor
-            }
+//            }
             floatingInput.warningLbl.text = violation.message
             floatingInput.warningLbl.textColor = floatingInput.setting?.warningColor
             floatingInput.parentHeight.constant = 65
