@@ -43,6 +43,14 @@ public extension RYFloatingInput {
         self.rx()
     }
     
+    func setRightIcon(image: UIImage) {
+        self.rightIcon.image = image
+    }
+    
+    func setLeftIcon(image: UIImage) {
+        self.icon.image = image
+    }
+    
     func inputField() -> UITextField {
         return self.input
     }

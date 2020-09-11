@@ -39,7 +39,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1vt-3E-JeI">
-                            <rect key="frame" x="12" y="14.666666666666664" width="24" height="24"/>
+                            <rect key="frame" x="0.0" y="14.666666666666664" width="24" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="24" id="HkD-dL-wuv"/>
                                 <constraint firstAttribute="height" constant="24" id="cGu-Yr-OIM"/>
@@ -54,7 +54,7 @@
                             <textInputTraits key="textInputTraits"/>
                         </textField>
                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NRi-vH-cmC">
-                            <rect key="frame" x="324" y="14.666666666666664" width="24" height="24"/>
+                            <rect key="frame" x="336" y="14.666666666666664" width="24" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="24" id="kMP-ah-n02"/>
                                 <constraint firstAttribute="height" constant="24" id="w5N-6D-L2B"/>
@@ -101,7 +101,7 @@
                         <constraint firstItem="EQU-37-ast" firstAttribute="leading" secondItem="CQM-3t-2Kh" secondAttribute="leading" id="6F2-x3-ywS"/>
                         <constraint firstItem="wo3-k0-iPU" firstAttribute="top" secondItem="EQU-37-ast" secondAttribute="bottom" constant="6" id="A4I-dG-5yg"/>
                         <constraint firstAttribute="trailing" secondItem="wo3-k0-iPU" secondAttribute="trailing" id="JSD-du-N0k"/>
-                        <constraint firstAttribute="trailing" secondItem="NRi-vH-cmC" secondAttribute="trailing" constant="12" id="QuF-Dr-IUK"/>
+                        <constraint firstAttribute="trailing" secondItem="NRi-vH-cmC" secondAttribute="trailing" id="QuF-Dr-IUK"/>
                         <constraint firstItem="NRi-vH-cmC" firstAttribute="centerY" secondItem="EQU-37-ast" secondAttribute="centerY" id="VmC-ok-xhJ"/>
                         <constraint firstItem="EQU-37-ast" firstAttribute="top" secondItem="jqN-2n-YhU" secondAttribute="bottom" constant="2" id="hRf-Fr-6q8"/>
                         <constraint firstAttribute="trailing" secondItem="EQU-37-ast" secondAttribute="trailing" id="jPv-LQ-jax"/>
@@ -110,7 +110,7 @@
                         <constraint firstItem="1vt-3E-JeI" firstAttribute="centerY" secondItem="EQU-37-ast" secondAttribute="centerY" id="sAv-Sl-2MT"/>
                         <constraint firstItem="9Rh-wK-ZKz" firstAttribute="leading" secondItem="CQM-3t-2Kh" secondAttribute="leading" id="tLn-dv-Y7M"/>
                         <constraint firstAttribute="bottom" secondItem="9Rh-wK-ZKz" secondAttribute="bottom" id="toE-0o-Gtm"/>
-                        <constraint firstItem="1vt-3E-JeI" firstAttribute="leading" secondItem="CQM-3t-2Kh" secondAttribute="leading" constant="12" id="vVZ-st-8bx"/>
+                        <constraint firstItem="1vt-3E-JeI" firstAttribute="leading" secondItem="CQM-3t-2Kh" secondAttribute="leading" id="vVZ-st-8bx"/>
                         <constraint firstItem="jqN-2n-YhU" firstAttribute="leading" secondItem="EQU-37-ast" secondAttribute="leading" id="yfg-Zr-d11"/>
                         <constraint firstItem="jqN-2n-YhU" firstAttribute="top" secondItem="CQM-3t-2Kh" secondAttribute="top" id="zXE-uq-M4W"/>
                     </constraints>
