@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://github.com/MananBiz4/RYFloatingInput'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Ray ChengJui YU' => 'ray.cj.yu@gmail.com' }
-  s.source           = { :git => 'https://github.com/MananBiz4/RYFloatingInput.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/ChengRayYu/RYFloatingInput.git', :tag => s.version.to_s }
 
   s.ios.deployment_target = '11.0'
 
