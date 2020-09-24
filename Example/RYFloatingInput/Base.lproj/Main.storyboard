@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="liv-xO-ysa">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -97,6 +98,71 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-414" y="-72"/>
+        </scene>
+        <!--View Controller2-->
+        <scene sceneID="PpP-kL-cFc">
+            <objects>
+                <viewController id="liv-xO-ysa" customClass="ViewController2" customModule="RYFloatingInput_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iOh-gj-vuK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9GY-uU-cFT">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="458"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="c" id="r0d-gT-6dM" customClass="customcell" customModule="RYFloatingInput_Example" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="66.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="r0d-gT-6dM" id="5aY-vh-UAL">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="66.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oky-xV-18X" customClass="RYFloatingInput" customModule="RYFloatingInput">
+                                                    <rect key="frame" x="50" y="10" width="315" height="46.5"/>
+                                                    <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="46" id="eK5-qD-dzH"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <outlet property="parentHeight" destination="eK5-qD-dzH" id="CTz-iI-z98"/>
+                                                    </connections>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="oky-xV-18X" firstAttribute="leading" secondItem="5aY-vh-UAL" secondAttribute="leading" constant="50" id="NgE-d5-Gyn"/>
+                                                <constraint firstItem="oky-xV-18X" firstAttribute="top" secondItem="5aY-vh-UAL" secondAttribute="top" constant="10" id="efE-sc-ARQ"/>
+                                                <constraint firstAttribute="trailing" secondItem="oky-xV-18X" secondAttribute="trailing" constant="10" id="lVb-b5-X0m"/>
+                                                <constraint firstAttribute="bottom" secondItem="oky-xV-18X" secondAttribute="bottom" constant="10" id="qct-Et-b78"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="textInput" destination="oky-xV-18X" id="tsM-LZ-ZID"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="liv-xO-ysa" id="dkA-xL-eNU"/>
+                                    <outlet property="delegate" destination="liv-xO-ysa" id="0rj-xd-d7i"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="9GY-uU-cFT" firstAttribute="top" secondItem="iOh-gj-vuK" secondAttribute="top" id="3fT-sj-se1"/>
+                            <constraint firstAttribute="trailing" secondItem="9GY-uU-cFT" secondAttribute="trailing" id="Dx6-Te-TND"/>
+                            <constraint firstItem="ctd-vd-njK" firstAttribute="bottom" secondItem="9GY-uU-cFT" secondAttribute="bottom" constant="209" id="R66-mB-wCs"/>
+                            <constraint firstItem="9GY-uU-cFT" firstAttribute="leading" secondItem="iOh-gj-vuK" secondAttribute="leading" id="kln-XY-cCz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ctd-vd-njK"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableview" destination="9GY-uU-cFT" id="Tr7-jT-3YP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cCw-9z-Yd9" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="377" y="-79"/>
         </scene>
     </scenes>
 </document>

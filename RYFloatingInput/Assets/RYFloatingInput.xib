@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,7 +16,6 @@
                 <outlet property="input" destination="EQU-37-ast" id="dEK-eM-9Q4"/>
                 <outlet property="inputLeadingMargin" destination="6F2-x3-ywS" id="1tB-nL-Mrt"/>
                 <outlet property="inputTrailingMargin" destination="jPv-LQ-jax" id="nc8-9w-Xkb"/>
-                <outlet property="parentHeight" destination="mEE-6I-O9s" id="KZR-Uf-8Ln"/>
                 <outlet property="rightIcon" destination="NRi-vH-cmC" id="RVA-9f-mLL"/>
                 <outlet property="warningLbl" destination="dHT-89-3pH" id="NDs-lQ-JVL"/>
             </connections>
@@ -105,7 +104,6 @@
                         <constraint firstItem="NRi-vH-cmC" firstAttribute="centerY" secondItem="EQU-37-ast" secondAttribute="centerY" id="VmC-ok-xhJ"/>
                         <constraint firstItem="EQU-37-ast" firstAttribute="top" secondItem="jqN-2n-YhU" secondAttribute="bottom" constant="2" id="hRf-Fr-6q8"/>
                         <constraint firstAttribute="trailing" secondItem="EQU-37-ast" secondAttribute="trailing" id="jPv-LQ-jax"/>
-                        <constraint firstAttribute="height" constant="46" id="mEE-6I-O9s"/>
                         <constraint firstItem="wo3-k0-iPU" firstAttribute="leading" secondItem="CQM-3t-2Kh" secondAttribute="leading" id="s3I-fJ-JYv"/>
                         <constraint firstItem="1vt-3E-JeI" firstAttribute="centerY" secondItem="EQU-37-ast" secondAttribute="centerY" id="sAv-Sl-2MT"/>
                         <constraint firstItem="9Rh-wK-ZKz" firstAttribute="leading" secondItem="CQM-3t-2Kh" secondAttribute="leading" id="tLn-dv-Y7M"/>
