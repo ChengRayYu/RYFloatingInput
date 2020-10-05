@@ -45,6 +45,9 @@ public extension RYFloatingInput {
         if setting.warning != nil {
             triggerWarning(setting.warning)
         }
+        if warningMessage != nil {
+            triggerWarning(setting.warning)
+        }
         
         self.rx()
     }
@@ -77,12 +80,14 @@ public extension RYFloatingInput {
         guard let warningMessage = message else {
             floatingHint.textColor = setting?.hintAccentColor
             warningLbl.text = nil
+            self.warningMessage = nil
             parentHeight.constant = 46
 //            if input.isFirstResponder {
                 divider.backgroundColor = setting?.dividerAccentColor
 //            }
             return
         }
+        self.warningMessage = message
         
         floatingHint.textColor = setting?.warningColor
 //        if (input.isFirstResponder) {
@@ -111,7 +116,8 @@ public class RYFloatingInput: UIView {
     
     fileprivate var setting: RYFloatingInputSetting?
     fileprivate let disposeBag = DisposeBag()
-
+    fileprivate var warningMessage: String?
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -177,6 +183,7 @@ private extension Reactive where Base: RYFloatingInput {
                 floatingInput.warningLbl.text != nil else {
                 floatingInput.floatingHint.textColor = floatingInput.setting?.hintAccentColor
                 floatingInput.warningLbl.text = nil
+                    floatingInput.setting?.warning = nil
                 floatingInput.parentHeight.constant = 46
 //                if floatingInput.input.isFirstResponder {
                     floatingInput.divider.backgroundColor = floatingInput.setting?.dividerAccentColor

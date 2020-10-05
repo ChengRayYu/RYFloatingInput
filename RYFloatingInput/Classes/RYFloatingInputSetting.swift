@@ -153,7 +153,7 @@ public class RYFloatingInputSetting {
     
     internal let dividerHeight: CGFloat
     internal let placeholder: String?
-    internal let warning: String?
+    internal var warning: String?
     internal let isSecure: Bool?
 
     internal let maxLength: Int?
