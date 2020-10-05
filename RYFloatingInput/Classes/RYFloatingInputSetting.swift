@@ -26,6 +26,7 @@ public extension RYFloatingInputSetting {
         fileprivate var _rightIconImage: UIImage?
         fileprivate var _dividerWeight: RYFloatingInput.DividerWeight = .regular
         fileprivate var _placeholder: String?
+        fileprivate var _warning: String?
         fileprivate var _secure: Bool = false
         fileprivate var _keyboardType: UIKeyboardType = .default
         fileprivate var _maxLength: Int?
@@ -106,6 +107,11 @@ public extension RYFloatingInputSetting {
             _placeholder = placeholder
             return self
         }
+        
+        public func warning(_ warning: String) -> Builder {
+            _warning = warning
+            return self
+        }
 
         public func secure(_ isSecure: Bool) -> Builder {
             _secure = isSecure
@@ -147,6 +153,7 @@ public class RYFloatingInputSetting {
     
     internal let dividerHeight: CGFloat
     internal let placeholder: String?
+    internal let warning: String?
     internal let isSecure: Bool?
 
     internal let maxLength: Int?
@@ -170,6 +177,7 @@ public class RYFloatingInputSetting {
         
         self.dividerHeight = builder._dividerWeight.rawValue
         self.placeholder = builder._placeholder
+        self.warning = builder._warning
         self.isSecure = builder._secure
 
         self.maxLength = builder._maxLength

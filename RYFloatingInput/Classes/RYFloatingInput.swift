@@ -40,6 +40,12 @@ public extension RYFloatingInput {
         if setting.rightIconImage != nil {
             inputTrailingMargin.constant = 48
         }
+        
+        // Initial warning
+        if setting.warning != nil {
+            triggerWarning(setting.warning)
+        }
+        
         self.rx()
     }
     
@@ -141,7 +147,8 @@ public class RYFloatingInput: UIView {
 
         let vm = RYFloatingInputViewModel(input: self.input.rx.text.orEmpty.asDriver(),
                                           dependency: (maxLength: self.setting?.maxLength,
-                                                       inputType: self.setting?.inputType))
+                                                       inputType: self.setting?.inputType,
+                                                       violation: self.setting?.warning))
 
         vm.inputViolatedDrv
             .map({ (status) -> (status: ViolationStatus, violation: InputViolation?)in
@@ -166,7 +173,8 @@ private extension Reactive where Base: RYFloatingInput {
 
         return Binder(base, binding: { (floatingInput, pair) in
 
-            guard let violation = pair.violation else {
+            guard let violation = pair.violation,
+                floatingInput.warningLbl.text != nil else {
                 floatingInput.floatingHint.textColor = floatingInput.setting?.hintAccentColor
                 floatingInput.warningLbl.text = nil
                 floatingInput.parentHeight.constant = 46
@@ -179,7 +187,7 @@ private extension Reactive where Base: RYFloatingInput {
 //            if (floatingInput.input.isFirstResponder) {
                 floatingInput.divider.backgroundColor = floatingInput.setting?.warningColor
 //            }
-            floatingInput.warningLbl.text = violation.message
+            floatingInput.warningLbl.text = floatingInput.setting?.warning
             floatingInput.warningLbl.textColor = floatingInput.setting?.warningColor
             floatingInput.parentHeight.constant = 65
             if let callback = violation.callback {
