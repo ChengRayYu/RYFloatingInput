@@ -28,8 +28,8 @@ public extension RYFloatingInput {
                                                               attributes: [NSAttributedString.Key.foregroundColor: setting.placeholderColor])
         self.input.keyboardType = setting.keyboardType
         self.divider.backgroundColor = setting.dividerColor
+        self.floatingHint.textColor = setting.hintColor
         self.warningLbl.textColor = setting.warningColor
-        self.floatingHint.textColor = setting.hintAccentColor
 
         // Left side icon
         if setting.iconImage != nil {
@@ -146,7 +146,7 @@ public class RYFloatingInput: UIView {
 
         input.rx.controlEvent([.editingDidEnd, .editingDidBegin])
             .subscribe(onNext: { _ in
-                self.divider.backgroundColor = self.input.isFirstResponder ? self.setting?.dividerAccentColor : self.setting?.dividerColor
+                self.floatingHint.textColor = self.input.isFirstResponder ? self.setting?.hintAccentColor : self.setting?.hintColor
                 self.divider.backgroundColor = self.input.isFirstResponder ? self.setting?.dividerAccentColor : self.setting?.dividerColor
             })
             .disposed(by: disposeBag)
@@ -181,13 +181,20 @@ private extension Reactive where Base: RYFloatingInput {
 
             guard let violation = pair.violation,
                 floatingInput.warningLbl.text != nil else {
-                floatingInput.floatingHint.textColor = floatingInput.setting?.hintAccentColor
+//                floatingInput.floatingHint.textColor = floatingInput.setting?.hintAccentColor
                 floatingInput.warningLbl.text = nil
                     floatingInput.setting?.warning = nil
                 floatingInput.parentHeight.constant = 46
 //                if floatingInput.input.isFirstResponder {
-                    floatingInput.divider.backgroundColor = floatingInput.setting?.dividerAccentColor
+//                    floatingInput.divider.backgroundColor = floatingInput.setting?.dividerAccentColor
 //                }
+                    if floatingInput.input.isFirstResponder {
+                        floatingInput.floatingHint.textColor = floatingInput.setting?.hintAccentColor
+                        floatingInput.divider.backgroundColor = floatingInput.setting?.dividerAccentColor
+                    } else {
+                        floatingInput.floatingHint.textColor = floatingInput.setting?.hintColor
+                        floatingInput.divider.backgroundColor = floatingInput.setting?.dividerColor
+                    }
                 return
             }
             floatingInput.floatingHint.textColor = floatingInput.setting?.warningColor
