@@ -268,20 +268,22 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-RYFloatingInput_Example/Pods-RYFloatingInput_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-RYFloatingInput_Example/Pods-RYFloatingInput_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/RYFloatingInput/RYFloatingInput.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RYFloatingInput.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RYFloatingInput_Example/Pods-RYFloatingInput_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RYFloatingInput_Example/Pods-RYFloatingInput_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		DFF74B8982B83E04EE5A83E8 /* [CP] Check Pods Manifest.lock */ = {

@@ -35,7 +35,8 @@ class ViewController: UIViewController {
                 .inputType(.number, onViolated: (message: "Number Only", callback: nil))
                 .build()
         )
-
+        cellInput.setFirstResponder()
+      
         emailInput.setup(setting:
             RYFloatingInputSetting.Builder.instance()
                 .placeholer("Email ")
