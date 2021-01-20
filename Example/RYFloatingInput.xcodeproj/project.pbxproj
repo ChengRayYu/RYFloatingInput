@@ -13,6 +13,7 @@
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		94DF8DDD251CDCE8007F24A8 /* ViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DF8DDC251CDCE8007F24A8 /* ViewController2.swift */; };
 		96C8E58B994850C816582DD2 /* Pods_RYFloatingInput_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E206732A051EA861D2714CC7 /* Pods_RYFloatingInput_Example.framework */; };
 		C1C7405FBB161F9BFD4BC567 /* Pods_RYFloatingInput_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 63DD15A95F6CB688611A4209 /* Pods_RYFloatingInput_Tests.framework */; };
 /* End PBXBuildFile section */
@@ -46,6 +47,7 @@
 		63DD15A95F6CB688611A4209 /* Pods_RYFloatingInput_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RYFloatingInput_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6865737DD3C34AAEC539DFB0 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		90D9384DE800FD3DF25AEE58 /* Pods-RYFloatingInput_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RYFloatingInput_Tests.release.xcconfig"; path = "Target Support Files/Pods-RYFloatingInput_Tests/Pods-RYFloatingInput_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		94DF8DDC251CDCE8007F24A8 /* ViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController2.swift; sourceTree = "<group>"; };
 		E206732A051EA861D2714CC7 /* Pods_RYFloatingInput_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RYFloatingInput_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -77,7 +79,6 @@
 				1736330450EEC1B86981BCA0 /* Pods-RYFloatingInput_Tests.debug.xcconfig */,
 				90D9384DE800FD3DF25AEE58 /* Pods-RYFloatingInput_Tests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -111,6 +112,7 @@
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
+				94DF8DDC251CDCE8007F24A8 /* ViewController2.swift */,
 			);
 			name = "Example for RYFloatingInput";
 			path = RYFloatingInput;
@@ -341,6 +343,7 @@
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
+				94DF8DDD251CDCE8007F24A8 /* ViewController2.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

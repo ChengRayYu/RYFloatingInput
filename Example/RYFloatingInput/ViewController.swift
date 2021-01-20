@@ -35,6 +35,7 @@ class ViewController: UIViewController {
                 .maxLength(10, onViolated: (message: "Exceed Max Length", callback: nil))
                 .inputType(.number, onViolated: (message: "Number Only", callback: nil))
                 .keyboardType(.numberPad)
+                .warning("My initial warning. My initial warning, My initial warning, My initial warning, My initial warning, My initial warning, My initial warning, My initial warning, My initial warning")
                 .build()
         )
 

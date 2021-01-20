@@ -17,6 +17,7 @@ public extension RYFloatingInputSetting {
         fileprivate var _textColor: UIColor?
         fileprivate var _placeholderColor: UIColor?
         fileprivate var _dividerColor: UIColor?
+        fileprivate var _hintColor: UIColor?
         fileprivate var _cursorColor: UIColor?
         fileprivate var _hintAccentColor: UIColor?
         fileprivate var _dividerAccentColor: UIColor?
@@ -26,6 +27,7 @@ public extension RYFloatingInputSetting {
         fileprivate var _rightIconImage: UIImage?
         fileprivate var _dividerWeight: RYFloatingInput.DividerWeight = .regular
         fileprivate var _placeholder: String?
+        fileprivate var _warning: String?
         fileprivate var _secure: Bool = false
         fileprivate var _keyboardType: UIKeyboardType = .default
         fileprivate var _maxLength: Int?
@@ -64,6 +66,11 @@ public extension RYFloatingInputSetting {
 
         public func dividerColor(_ color: UIColor) -> Builder {
             _dividerColor = color
+            return self
+        }
+        
+        public func hintColor(_ color: UIColor) -> Builder {
+            _hintColor = color
             return self
         }
 
@@ -106,6 +113,11 @@ public extension RYFloatingInputSetting {
             _placeholder = placeholder
             return self
         }
+        
+        public func warning(_ warning: String) -> Builder {
+            _warning = warning
+            return self
+        }
 
         public func secure(_ isSecure: Bool) -> Builder {
             _secure = isSecure
@@ -136,6 +148,7 @@ public class RYFloatingInputSetting {
     internal let textColor: UIColor
     internal let placeholderColor: UIColor
     internal let dividerColor: UIColor
+    internal let hintColor: UIColor
     internal let cursorColor: UIColor
     internal let hintAccentColor: UIColor
     internal let dividerAccentColor: UIColor
@@ -147,6 +160,7 @@ public class RYFloatingInputSetting {
     
     internal let dividerHeight: CGFloat
     internal let placeholder: String?
+    internal var warning: String?
     internal let isSecure: Bool?
 
     internal let maxLength: Int?
@@ -160,6 +174,7 @@ public class RYFloatingInputSetting {
         self.textColor = builder._textColor ?? builder._theme.text
         self.placeholderColor = builder._placeholderColor ?? builder._theme.placeholder
         self.dividerColor = builder._dividerColor ?? builder._theme.divider
+        self.hintColor = builder._hintColor ?? builder._theme.divider
         self.cursorColor = builder._cursorColor ?? builder._theme.cursor
         self.hintAccentColor = builder._hintAccentColor ?? builder._theme.accent
         self.dividerAccentColor = builder._dividerAccentColor ?? builder._theme.accent
@@ -170,6 +185,7 @@ public class RYFloatingInputSetting {
         
         self.dividerHeight = builder._dividerWeight.rawValue
         self.placeholder = builder._placeholder
+        self.warning = builder._warning
         self.isSecure = builder._secure
 
         self.maxLength = builder._maxLength
@@ -181,4 +197,3 @@ public class RYFloatingInputSetting {
 
 
 }
-

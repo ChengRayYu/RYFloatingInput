@@ -28,8 +28,8 @@ public extension RYFloatingInput {
                                                               attributes: [NSAttributedString.Key.foregroundColor: setting.placeholderColor])
         self.input.keyboardType = setting.keyboardType
         self.divider.backgroundColor = setting.dividerColor
+        self.floatingHint.textColor = setting.hintColor
         self.warningLbl.textColor = setting.warningColor
-        self.floatingHint.textColor = setting.hintAccentColor
 
         // Left side icon
         if setting.iconImage != nil {
@@ -40,6 +40,15 @@ public extension RYFloatingInput {
         if setting.rightIconImage != nil {
             inputTrailingMargin.constant = 48
         }
+        
+        // Initial warning
+        if setting.warning != nil {
+            triggerWarning(setting.warning)
+        }
+        if warningMessage != nil {
+            triggerWarning(setting.warning)
+        }
+        
         self.rx()
     }
     
@@ -79,12 +88,14 @@ public extension RYFloatingInput {
         guard let warningMessage = message else {
             floatingHint.textColor = setting?.hintAccentColor
             warningLbl.text = nil
-            parentHeight.constant = 46
+            self.warningMessage = nil
+            updateHeight(warning: false)
 //            if input.isFirstResponder {
                 divider.backgroundColor = setting?.dividerAccentColor
 //            }
             return
         }
+        self.warningMessage = message
         
         floatingHint.textColor = setting?.warningColor
 //        if (input.isFirstResponder) {
@@ -92,7 +103,22 @@ public extension RYFloatingInput {
 //        }
         warningLbl.text = warningMessage
         warningLbl.textColor = setting?.warningColor
-        parentHeight.constant = 65
+        updateHeight(warning: true)
+    }
+    
+    func updateHeight(warning: Bool) {
+        parentHeight.constant = 46 + (warning ? warningLbl.calculateMaxHeight() : 0)
+    }
+}
+
+extension UILabel {
+    func calculateMaxHeight() -> CGFloat {
+        let maxSize = CGSize(width: frame.size.width, height: CGFloat(Float.infinity))
+        let text = (self.text ?? "") as NSString
+        let textSize = text.boundingRect(with: maxSize, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font as Any], context: nil)
+//        let linesRoundedUp = Int(ceil(textSize.height/charSize))
+        let maxHeight = Int(textSize.height) + 3
+        return CGFloat(maxHeight)
     }
 }
 
@@ -113,7 +139,8 @@ public class RYFloatingInput: UIView {
     
     fileprivate var setting: RYFloatingInputSetting?
     fileprivate let disposeBag = DisposeBag()
-
+    fileprivate var warningMessage: String?
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -142,14 +169,15 @@ public class RYFloatingInput: UIView {
 
         input.rx.controlEvent([.editingDidEnd, .editingDidBegin])
             .subscribe(onNext: { _ in
-                self.divider.backgroundColor = self.input.isFirstResponder ? self.setting?.dividerAccentColor : self.setting?.dividerColor
+                self.floatingHint.textColor = self.input.isFirstResponder ? self.setting?.hintAccentColor : self.setting?.hintColor
                 self.divider.backgroundColor = self.input.isFirstResponder ? self.setting?.dividerAccentColor : self.setting?.dividerColor
             })
             .disposed(by: disposeBag)
 
         let vm = RYFloatingInputViewModel(input: self.input.rx.text.orEmpty.asDriver(),
                                           dependency: (maxLength: self.setting?.maxLength,
-                                                       inputType: self.setting?.inputType))
+                                                       inputType: self.setting?.inputType,
+                                                       violation: self.setting?.warning))
 
         vm.inputViolatedDrv
             .map({ (status) -> (status: ViolationStatus, violation: InputViolation?)in
@@ -174,22 +202,31 @@ private extension Reactive where Base: RYFloatingInput {
 
         return Binder(base, binding: { (floatingInput, pair) in
 
-            guard let violation = pair.violation else {
-                floatingInput.floatingHint.textColor = floatingInput.setting?.hintAccentColor
+            guard let violation = pair.violation,
+                floatingInput.warningLbl.text != nil else {
+//                floatingInput.floatingHint.textColor = floatingInput.setting?.hintAccentColor
                 floatingInput.warningLbl.text = nil
-                floatingInput.parentHeight.constant = 46
+                    floatingInput.setting?.warning = nil
+                    floatingInput.updateHeight(warning: false)
 //                if floatingInput.input.isFirstResponder {
-                    floatingInput.divider.backgroundColor = floatingInput.setting?.dividerAccentColor
+//                    floatingInput.divider.backgroundColor = floatingInput.setting?.dividerAccentColor
 //                }
+                    if floatingInput.input.isFirstResponder {
+                        floatingInput.floatingHint.textColor = floatingInput.setting?.hintAccentColor
+                        floatingInput.divider.backgroundColor = floatingInput.setting?.dividerAccentColor
+                    } else {
+                        floatingInput.floatingHint.textColor = floatingInput.setting?.hintColor
+                        floatingInput.divider.backgroundColor = floatingInput.setting?.dividerColor
+                    }
                 return
             }
             floatingInput.floatingHint.textColor = floatingInput.setting?.warningColor
 //            if (floatingInput.input.isFirstResponder) {
                 floatingInput.divider.backgroundColor = floatingInput.setting?.warningColor
 //            }
-            floatingInput.warningLbl.text = violation.message
+            floatingInput.warningLbl.text = floatingInput.setting?.warning
             floatingInput.warningLbl.textColor = floatingInput.setting?.warningColor
-            floatingInput.parentHeight.constant = 65
+            floatingInput.updateHeight(warning: true)
             if let callback = violation.callback {
                 callback()
             }
