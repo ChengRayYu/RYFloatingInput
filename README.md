@@ -1,3 +1,4 @@
+# For Biz4Solutions LLC.
 # RYFloatingInput
 RYFlotingInput, inspired by "Floating Label Pattern" and implemented with RxSwift & mvvm pattern, provides a fully-customizable textfield input control along with a painless input text validation.
 
@@ -45,6 +46,18 @@ self.view.addSubview(floatingInput)
 * [Icon / Placeholder / Secure Text](#other)
 
 <a id='setting_builder'></a>
+### Parent height constraint:
+Height constraint is mandatory for view which is subclassed with RYFloatingInput along with outlet connection of height constraint to parentHeight outlet.
+
+Height without error: 46
+Height with error: 65
+
+This height contains 6 points of margins 3 points of top and 3 points at bottom in both cases of error and without error.
+Initial height should be of 46.
+
+Library will automatically manage the height for both cases after that.
+
+<a id='setting_builder'></a>
 ### Setting Builder
 `RYFloatingInputSetting` is required for `RYFloatingInput` to work properly, which concise all the settings and customizations together into one single builder function. Here are the steps:
 1. Initialize `RYFloatingInputSetting` instance by using `RYFloatingInputSetting.Builder`
@@ -83,6 +96,18 @@ RYFloatingInputSetting.Builder.instance()
     }))
     .build()
 ```
+3 To generate erros manually:
+Example:
+```swift 
+if text.isEmpty {
+    cellInput.triggerWarning("Mobile number cannot be blank.")
+} else if text.count != 10 {
+    cellInput.triggerWarning("Mobile number must be of 10 digit.")
+} else {
+    cellInput.triggerWarning(nil)
+}
+```
+
 <a id='theme_customization'></a>
 ### Color & Theme Customization
 **Color Customization** is implemented for almost every component in `RYFloatingInput`, such as background, divider, placeholer, divider, warning label, and input cursor.
@@ -95,7 +120,8 @@ RYFloatingInputSetting.Builder.instance()
     .placeholderColor(.lightGray)
     .dividerColor(.lightGray)
     .cursorColor(.blue)
-    .accentColor(.cyan)
+    .dividerAccentColor(.cyan)
+    .hintAccentColor(.cyan)
     .warningColor(.red)
     .build()
 ```

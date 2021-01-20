@@ -12,12 +12,13 @@ import RxCocoa
 
 public extension RYFloatingInput {
 
-    public func setup(setting: RYFloatingInputSetting) {
+    func setup(setting: RYFloatingInputSetting) {
 
         self.setting = setting
 
         self.backgroundColor = setting.backgroundColor
         self.icon.image = setting.iconImage
+        self.rightIcon.image = setting.rightIconImage
         self.input.textColor = setting.textColor
         self.input.tintColor = setting.cursorColor
         self.dividerHeight.constant = setting.dividerHeight
@@ -25,25 +26,99 @@ public extension RYFloatingInput {
         self.input.isSecureTextEntry = setting.isSecure ?? false
         self.input.attributedPlaceholder = NSAttributedString(string: setting.placeholder ?? "",
                                                               attributes: [NSAttributedString.Key.foregroundColor: setting.placeholderColor])
+        self.input.keyboardType = setting.keyboardType
         self.divider.backgroundColor = setting.dividerColor
-        self.warningLbl.textColor = setting.accentColor
+        self.floatingHint.textColor = setting.hintColor
+        self.warningLbl.textColor = setting.warningColor
 
+        // Left side icon
         if setting.iconImage != nil {
             inputLeadingMargin.constant = 48
         }
+        
+        // Right side icon
+        if setting.rightIconImage != nil {
+            inputTrailingMargin.constant = 48
+        }
+        
+        // Initial warning
+        if setting.warning != nil {
+            triggerWarning(setting.warning)
+        }
+        if warningMessage != nil {
+            triggerWarning(setting.warning)
+        }
+        
         self.rx()
     }
+    
+    func setRightIcon(image: UIImage) {
+        self.rightIcon.image = image
+    }
+    
+    func setLeftIcon(image: UIImage) {
+        self.icon.image = image
+    }
+    
+    func inputField() -> UITextField {
+        return self.input
+    }
+    
+    func leftIconImageView() -> UIImageView {
+        return self.icon
+    }
+    
+    func rightIconImageView() -> UIImageView {
+        return self.rightIcon
+    }
 
-    public func text() -> String? {
+    func text() -> String? {
         return self.input.text
     }
 
-    public func setEnabled(_ flag: Bool? = true) {
+    func setEnabled(_ flag: Bool? = true) {
         self.input.isUserInteractionEnabled = flag!
     }
 
-    public override func resignFirstResponder() -> Bool {
+    override func resignFirstResponder() -> Bool {
         return input.resignFirstResponder()
+    }
+    
+    func triggerWarning(_ message: String?) {
+        guard let warningMessage = message else {
+            floatingHint.textColor = setting?.hintAccentColor
+            warningLbl.text = nil
+            self.warningMessage = nil
+            updateHeight(warning: false)
+//            if input.isFirstResponder {
+                divider.backgroundColor = setting?.dividerAccentColor
+//            }
+            return
+        }
+        self.warningMessage = message
+        
+        floatingHint.textColor = setting?.warningColor
+//        if (input.isFirstResponder) {
+            divider.backgroundColor = setting?.warningColor
+//        }
+        warningLbl.text = warningMessage
+        warningLbl.textColor = setting?.warningColor
+        updateHeight(warning: true)
+    }
+    
+    func updateHeight(warning: Bool) {
+        parentHeight.constant = 46 + (warning ? warningLbl.calculateMaxHeight() : 0)
+    }
+}
+
+extension UILabel {
+    func calculateMaxHeight() -> CGFloat {
+        let maxSize = CGSize(width: frame.size.width, height: CGFloat(Float.infinity))
+        let text = (self.text ?? "") as NSString
+        let textSize = text.boundingRect(with: maxSize, options: .usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: font as Any], context: nil)
+//        let linesRoundedUp = Int(ceil(textSize.height/charSize))
+        let maxHeight = Int(textSize.height) + 3
+        return CGFloat(maxHeight)
     }
 }
 
@@ -52,16 +127,20 @@ public class RYFloatingInput: UIView {
     public typealias InputViolation = (message: String, callback: (() -> Void)?)
 
     @IBOutlet fileprivate weak var icon: UIImageView!
+    @IBOutlet fileprivate weak var rightIcon: UIImageView!
     @IBOutlet fileprivate weak var floatingHint: UILabel!
     @IBOutlet fileprivate weak var input: UITextField!
     @IBOutlet fileprivate weak var divider: UIView!
     @IBOutlet fileprivate weak var dividerHeight: NSLayoutConstraint!
     @IBOutlet fileprivate weak var warningLbl: UILabel!
     @IBOutlet fileprivate weak var inputLeadingMargin: NSLayoutConstraint!
-
+    @IBOutlet fileprivate weak var inputTrailingMargin: NSLayoutConstraint!
+    @IBOutlet fileprivate weak var parentHeight: NSLayoutConstraint!
+    
     fileprivate var setting: RYFloatingInputSetting?
     fileprivate let disposeBag = DisposeBag()
-
+    fileprivate var warningMessage: String?
+    
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -90,13 +169,15 @@ public class RYFloatingInput: UIView {
 
         input.rx.controlEvent([.editingDidEnd, .editingDidBegin])
             .subscribe(onNext: { _ in
-                self.divider.backgroundColor = self.input.isFirstResponder ? self.setting?.accentColor : self.setting?.dividerColor
+                self.floatingHint.textColor = self.input.isFirstResponder ? self.setting?.hintAccentColor : self.setting?.hintColor
+                self.divider.backgroundColor = self.input.isFirstResponder ? self.setting?.dividerAccentColor : self.setting?.dividerColor
             })
             .disposed(by: disposeBag)
 
         let vm = RYFloatingInputViewModel(input: self.input.rx.text.orEmpty.asDriver(),
                                           dependency: (maxLength: self.setting?.maxLength,
-                                                       inputType: self.setting?.inputType))
+                                                       inputType: self.setting?.inputType,
+                                                       violation: self.setting?.warning))
 
         vm.inputViolatedDrv
             .map({ (status) -> (status: ViolationStatus, violation: InputViolation?)in
@@ -121,20 +202,31 @@ private extension Reactive where Base: RYFloatingInput {
 
         return Binder(base, binding: { (floatingInput, pair) in
 
-            guard let violation = pair.violation else {
-                floatingInput.floatingHint.textColor = floatingInput.setting?.accentColor
+            guard let violation = pair.violation,
+                floatingInput.warningLbl.text != nil else {
+//                floatingInput.floatingHint.textColor = floatingInput.setting?.hintAccentColor
                 floatingInput.warningLbl.text = nil
-                if floatingInput.input.isFirstResponder {
-                    floatingInput.divider.backgroundColor = floatingInput.setting?.accentColor
-                }
+                    floatingInput.setting?.warning = nil
+                    floatingInput.updateHeight(warning: false)
+//                if floatingInput.input.isFirstResponder {
+//                    floatingInput.divider.backgroundColor = floatingInput.setting?.dividerAccentColor
+//                }
+                    if floatingInput.input.isFirstResponder {
+                        floatingInput.floatingHint.textColor = floatingInput.setting?.hintAccentColor
+                        floatingInput.divider.backgroundColor = floatingInput.setting?.dividerAccentColor
+                    } else {
+                        floatingInput.floatingHint.textColor = floatingInput.setting?.hintColor
+                        floatingInput.divider.backgroundColor = floatingInput.setting?.dividerColor
+                    }
                 return
             }
             floatingInput.floatingHint.textColor = floatingInput.setting?.warningColor
-            if (floatingInput.input.isFirstResponder) {
+//            if (floatingInput.input.isFirstResponder) {
                 floatingInput.divider.backgroundColor = floatingInput.setting?.warningColor
-            }
-            floatingInput.warningLbl.text = violation.message
+//            }
+            floatingInput.warningLbl.text = floatingInput.setting?.warning
             floatingInput.warningLbl.textColor = floatingInput.setting?.warningColor
+            floatingInput.updateHeight(warning: true)
             if let callback = violation.callback {
                 callback()
             }

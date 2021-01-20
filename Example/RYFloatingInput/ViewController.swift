@@ -30,9 +30,12 @@ class ViewController: UIViewController {
         cellInput.setup(setting:
             RYFloatingInputSetting.Builder.instance()
                 .placeholer("Cellphone")
+                .rightIconImage(UIImage(named: "ic_num")!)
                 .iconImage(UIImage(named: "ic_num")!)
                 .maxLength(10, onViolated: (message: "Exceed Max Length", callback: nil))
                 .inputType(.number, onViolated: (message: "Number Only", callback: nil))
+                .keyboardType(.numberPad)
+                .warning("My initial warning. My initial warning, My initial warning, My initial warning, My initial warning, My initial warning, My initial warning, My initial warning, My initial warning")
                 .build()
         )
 
@@ -56,7 +59,7 @@ class ViewController: UIViewController {
                 .build()
         )
         
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .gray
     }
 
     override func didReceiveMemoryWarning() {
@@ -68,6 +71,18 @@ class ViewController: UIViewController {
         _ = emailInput.resignFirstResponder()
         _ = firstNameInput.resignFirstResponder()
         _ = lastNameInput.resignFirstResponder()
+    }
+    
+    @IBAction func validatePressed(_ sender: UIButton) {
+        if let text = cellInput.text() {
+            if text.isEmpty {
+                cellInput.triggerWarning("Mobile number cannot be blank.")
+            } else if text.count != 10 {
+                cellInput.triggerWarning("Mobile number must be of 10 digit.")
+            } else {
+                cellInput.triggerWarning(nil)
+            }
+        }
     }
 }
 

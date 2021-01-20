@@ -10,27 +10,36 @@ import UIKit
 
 public extension RYFloatingInputSetting {
 
-    public class Builder {
+    class Builder {
 
         fileprivate var _theme: RYFloatingInput.Theme = .standard
         fileprivate var _backgroundColor: UIColor?
         fileprivate var _textColor: UIColor?
         fileprivate var _placeholderColor: UIColor?
         fileprivate var _dividerColor: UIColor?
+        fileprivate var _hintColor: UIColor?
         fileprivate var _cursorColor: UIColor?
-        fileprivate var _accentColor: UIColor?
+        fileprivate var _hintAccentColor: UIColor?
+        fileprivate var _dividerAccentColor: UIColor?
         fileprivate var _warningColor: UIColor?
 
         fileprivate var _iconImage: UIImage?
+        fileprivate var _rightIconImage: UIImage?
         fileprivate var _dividerWeight: RYFloatingInput.DividerWeight = .regular
         fileprivate var _placeholder: String?
+        fileprivate var _warning: String?
         fileprivate var _secure: Bool = false
-
+        fileprivate var _keyboardType: UIKeyboardType = .default
         fileprivate var _maxLength: Int?
         fileprivate var _maxLengthViolation: RYFloatingInput.InputViolation?
         fileprivate var _inputType: RYFloatingInput.InputType?
         fileprivate var _inputTypeViolation: RYFloatingInput.InputViolation?
 
+        public func keyboardType(_ type: UIKeyboardType) -> Builder {
+            _keyboardType = type
+            return self
+        }
+        
         public static func instance() -> Builder {
             return Builder()
         }
@@ -59,14 +68,24 @@ public extension RYFloatingInputSetting {
             _dividerColor = color
             return self
         }
+        
+        public func hintColor(_ color: UIColor) -> Builder {
+            _hintColor = color
+            return self
+        }
 
         public func cursorColor(_ color: UIColor) -> Builder {
             _cursorColor = color
             return self
         }
 
-        public func accentColor(_ color: UIColor) -> Builder {
-            _accentColor = color
+        public func dividerAccentColor(_ color: UIColor) -> Builder {
+            _dividerAccentColor = color
+            return self
+        }
+        
+        public func hintAccentColor(_ color: UIColor) -> Builder {
+            _hintAccentColor = color
             return self
         }
 
@@ -79,6 +98,11 @@ public extension RYFloatingInputSetting {
             _iconImage = image
             return self
         }
+        
+        public func rightIconImage(_ image: UIImage) -> Builder {
+            _rightIconImage = image
+            return self
+        }
 
         public func dividerWeight(_ weight: RYFloatingInput.DividerWeight) -> Builder {
             _dividerWeight = weight
@@ -87,6 +111,11 @@ public extension RYFloatingInputSetting {
 
         public func placeholer(_ placeholder: String) -> Builder {
             _placeholder = placeholder
+            return self
+        }
+        
+        public func warning(_ warning: String) -> Builder {
+            _warning = warning
             return self
         }
 
@@ -119,13 +148,19 @@ public class RYFloatingInputSetting {
     internal let textColor: UIColor
     internal let placeholderColor: UIColor
     internal let dividerColor: UIColor
+    internal let hintColor: UIColor
     internal let cursorColor: UIColor
-    internal let accentColor: UIColor
+    internal let hintAccentColor: UIColor
+    internal let dividerAccentColor: UIColor
     internal let warningColor: UIColor
 
+    internal let keyboardType: UIKeyboardType
     internal let iconImage: UIImage?
+    internal let rightIconImage: UIImage?
+    
     internal let dividerHeight: CGFloat
     internal let placeholder: String?
+    internal var warning: String?
     internal let isSecure: Bool?
 
     internal let maxLength: Int?
@@ -139,21 +174,26 @@ public class RYFloatingInputSetting {
         self.textColor = builder._textColor ?? builder._theme.text
         self.placeholderColor = builder._placeholderColor ?? builder._theme.placeholder
         self.dividerColor = builder._dividerColor ?? builder._theme.divider
+        self.hintColor = builder._hintColor ?? builder._theme.divider
         self.cursorColor = builder._cursorColor ?? builder._theme.cursor
-        self.accentColor = builder._accentColor ?? builder._theme.accent
+        self.hintAccentColor = builder._hintAccentColor ?? builder._theme.accent
+        self.dividerAccentColor = builder._dividerAccentColor ?? builder._theme.accent
         self.warningColor = builder._warningColor ?? builder._theme.warning
 
         self.iconImage = builder._iconImage
+        self.rightIconImage = builder._rightIconImage
+        
         self.dividerHeight = builder._dividerWeight.rawValue
         self.placeholder = builder._placeholder
+        self.warning = builder._warning
         self.isSecure = builder._secure
 
         self.maxLength = builder._maxLength
         self.maxLengthViolation = builder._maxLengthViolation
         self.inputType = builder._inputType
         self.inputTypeViolation = builder._inputTypeViolation
+        self.keyboardType = builder._keyboardType
     }
 
 
 }
-
