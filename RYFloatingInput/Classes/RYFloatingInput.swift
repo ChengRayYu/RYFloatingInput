@@ -63,6 +63,14 @@ public extension RYFloatingInput {
     func inputField() -> UITextField {
         return self.input
     }
+    
+    func leftIconImageView() -> UIImageView {
+        return self.icon
+    }
+    
+    func rightIconImageView() -> UIImageView {
+        return self.rightIcon
+    }
 
     func text() -> String? {
         return self.input.text
